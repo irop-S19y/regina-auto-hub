@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\AboutUs\" />
+    <Folder Include="Views\AllServisec\" />
+    <Folder Include="Views\SignUp\" />
+  </ItemGroup>
+
 </Project>
