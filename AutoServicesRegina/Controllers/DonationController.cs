@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AutoServicesRegina.Controllers
 {
-    public class SignUpController : Controller
+    public class DonationController : Controller
     {
-        // GET: SignUpController
+        // GET: DonationController
         public ActionResult Index()
         {
             return View();

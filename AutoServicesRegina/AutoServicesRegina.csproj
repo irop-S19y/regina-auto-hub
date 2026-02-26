@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\AboutUs\" />
+    <Folder Include="Views\Aboutus\" />
     <Folder Include="Views\AllServisec\" />
-    <Folder Include="Views\SignUp\" />
+    <Folder Include="Views\RegistrationForm\" />
+    <Folder Include="Views\SignUp2\" />
   </ItemGroup>
 
 </Project>
