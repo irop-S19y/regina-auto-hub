@@ -13,13 +13,13 @@ namespace AutoServicesRegina.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            if (username == "19970602irop@gmail.com" && password == "121545")
+            if (email == "19970602irop@gmail.com" && password == "121545")
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, username)
+                    new Claim(ClaimTypes.Name, email)
                 };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -32,7 +32,7 @@ namespace AutoServicesRegina.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.Error = "Wrong username or password";
+            ViewBag.Error = "Wrong email or password";
             return View();
         }
 
