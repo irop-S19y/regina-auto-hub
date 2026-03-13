@@ -34,12 +34,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/AllServisec/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsU2VydmlzZWNcRGV0YWlsLmNzaHRtbA==
+[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/AllServices/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsU2VydmljZXNcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/AllServisec/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsU2VydmlzZWNcSW5kZXguY3NodG1s
+[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/AllServices/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsU2VydmljZXNcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/AllServices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsU2VydmljZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/Donation/Index.cshtml]
@@ -52,10 +56,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/RegistrationForm/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uRm9ybVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/New project 2026.02.14 All services in Regina/regina-auto-hub/AutoServicesRegina/Views/Shared/Error.cshtml]

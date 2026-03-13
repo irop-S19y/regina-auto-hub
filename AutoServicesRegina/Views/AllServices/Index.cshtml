@@ -1,0 +1,28 @@
+﻿ List<AutoServicesRegina.Models
+
+<h1>All Services</h1>
+
+<a href="/AllServices/Add" class="btn btn-primary">Add Auto Service</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Website</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var service in Model)
+    {
+        <tr>
+            <td>@service.Name</td>
+            <td>@service.Address</td>
+            <td>@service.City</td>
+            <td>@service.Phone</td>
+            <td>@service.Website</td>
+        </tr>
+    }

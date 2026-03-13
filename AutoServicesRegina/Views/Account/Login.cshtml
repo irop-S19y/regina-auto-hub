@@ -1,22 +1,34 @@
-﻿<form asp-controller="Account" asp-action="Login" method="post">
+﻿<div class="d-flex justify-content-center align-items-center" style="height:80vh;">
 
-<h1 class="h3 mb-3 fw-normal">Login</h1>
+    <div class="card shadow-lg p-4" style="width:400px; border-radius:15px;">
 
-<div class="form-floating">
-    <input type="email" name="email" class="form-control" placeholder="name@example.com">
-    <label>Email address</label>
+        <h3 class="text-center mb-4">Login</h3>
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="name@example.com" minlength="8" maxlength="30" 
+                required title="Email must be between 8 and 30 characters">
+                 
+                                  
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" minlength="6" maxlength="15" 
+                required title="Password must be between 6 and 15 characters">
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name="RememberMe">
+                <label class="form-check-label">Remember me</label>
+            </div>
+
+            <button class="btn btn-primary w-100">Sign in</button>
+
+        </form>
+
+    </div>
+
 </div>
-
-<div class="form-floating">
-    <input type="password" name="password" class="form-control" placeholder="Password">
-    <label>Password</label>
-</div>
-
-<div class="form-check text-start my-3">
-    <input class="form-check-input" type="checkbox" name="RememberMe">
-    <label class="form-check-label">Remember me</label>
-</div>
-
-<button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-
-</form>

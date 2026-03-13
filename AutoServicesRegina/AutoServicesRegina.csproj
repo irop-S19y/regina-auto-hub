@@ -9,9 +9,7 @@
   <ItemGroup>
     <Folder Include="Views\Aboutus\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\AllServisec\" />
     <Folder Include="Views\Donation\" />
-    <Folder Include="Views\RegistrationForm\" />
     <Folder Include="Views\SignUp2\" />
   </ItemGroup>
 
