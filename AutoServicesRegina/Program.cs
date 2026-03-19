@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using AutoServicesRegina.Data;
 
 namespace AutoServicesRegina;
 
@@ -20,6 +21,14 @@ public class Program
             });
 
         var app = builder.Build();
+        
+
+         using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<AutoServicesReginaDbContext>();
+                DatabaseSeed.Seed(context);
+            }
+              
 
         // Configure pipeline
         if (!app.Environment.IsDevelopment())
