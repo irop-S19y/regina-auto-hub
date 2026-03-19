@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoServicesRegina")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dee54c4d7ea72ea2c8da00ea6bb5bc373844d52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07fdfa584f8de929110b0817e28dbb2c527642b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoServicesRegina")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoServicesRegina")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

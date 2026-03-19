@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Data\Entities\" />
+    <Folder Include="db\" />
     <Folder Include="Views\Aboutus\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Contact\" />
