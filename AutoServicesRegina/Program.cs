@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using AutoServicesRegina.Data;
+using Microsoft.EntityFrameworkCore;
+using Stripe;
+
 
 namespace AutoServicesRegina;
 
@@ -10,9 +13,15 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+       
+        StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
         // Add services
         builder.Services.AddControllersWithViews();
+        
+        builder.Services.AddDbContext<AutoServicesReginaDbContext>(options =>
+        options.UseSqlite("Data Source=db/AutoServicesReginaDb.sqlite"));
+        
 
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
@@ -21,13 +30,11 @@ public class Program
             });
 
         var app = builder.Build();
-        
+          // Seed Database
+         var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<AutoServicesReginaDbContext>();
 
-         using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<AutoServicesReginaDbContext>();
-                DatabaseSeed.Seed(context);
-            }
+          DatabaseSeed.Seed(db);
+         
               
 
         // Configure pipeline
