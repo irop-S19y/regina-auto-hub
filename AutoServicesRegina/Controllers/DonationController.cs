@@ -5,6 +5,11 @@ namespace AutoServicesRegina.Controllers
 {
     public class DonationController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Donate(int amount)
         {
             var options = new SessionCreateOptions
@@ -31,10 +36,11 @@ namespace AutoServicesRegina.Controllers
                     }
                 },
 
+
                 Mode = "payment",
 
-                SuccessUrl = "https://localhost:5001/donation/success",
-                CancelUrl = "https://localhost:5001/donation/cancel"
+                SuccessUrl = Request.Scheme + "://" + Request.Host + "/donation/success",
+                CancelUrl = Request.Scheme + "://" + Request.Host + "/donation/cancel"
             };
 
             var service = new SessionService();
