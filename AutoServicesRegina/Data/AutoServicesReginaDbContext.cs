@@ -16,6 +16,8 @@ public class AutoServicesReginaDbContext : DbContext
     // edd Donate
     public DbSet<DonationRecord> Donations { get; set; }
 
+    public DbSet<Comment> Comments { get; set; }
+
     public AutoServicesReginaDbContext()
     {
     }
