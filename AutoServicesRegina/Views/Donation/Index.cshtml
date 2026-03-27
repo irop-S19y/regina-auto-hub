@@ -1,57 +1,78 @@
 ﻿<h1>Donation</h1>
+
 <div class="container mt-5 text-center">
 
-<h1 class="fw-bold">❤️ Support Our Project</h1>
+    <h1 class="fw-bold">❤️ Support Our Project</h1>
 
-<p class="text-muted">
-Help us build better tools for everyone.
-</p>
+    <p class="text-muted">
+        Help us build better tools for everyone.
+    </p>
 
-<div class="mt-4">
-<h5>$0 raised of $999 goal</h5>
+    <div class="mt-4">
+        @{
+     decimal total = ViewBag.Total ?? 0;
+     decimal percent = (total * 100) / 999;
+         }
+        <h5>$@total.ToString("0.00") raised of $999 goal</h5>
 
-<div class="progress" style="height:25px;">
-<div class="progress-bar bg-success" style="width:0%">
-0%
+        <div class="progress" style="height:25px;">
+            <div class="progress-bar bg-success"
+                style="width:@percent%">
+                @percent.ToString("0")%
+        </div>
+       </div>
+       </div>
+
+    <div class="row mt-5 justify-content-center">
+
+        <div class="col-md-2">
+            <a href="/Donation/Donate?amount=5" class="btn btn-outline-primary w-100 p-3">$5</a>
+        </div>
+
+        <div class="col-md-2">
+            <a href="/Donation/Donate?amount=10" class="btn btn-outline-primary w-100 p-3">$10</a>
+        </div>
+
+        <div class="col-md-2">
+            <a href="/Donation/Donate?amount=25" class="btn btn-outline-primary w-100 p-3">$25</a>
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+        <a href="/Donation/Donate?amount=50" class="btn btn-danger btn-lg px-5">
+            Donate $50 ❤️
+        </a>
+    </div>
+
+    <!-- Custom amount -->
+    <div class="mt-4">
+
+        <input id="customAmount" type="number" min="1"
+               class="form-control w-25 d-inline"
+               placeholder="Custom amount">
+
+        <button id="customDonateBtn" class="btn btn-success ms-2">
+            Donate
+        </button>
+
+    </div>
+
+    <div class="mt-5 text-muted">
+        Secure payments: PayPal | Credit Card
+    </div>
+
 </div>
-</div>
-</div>
 
-<div class="row mt-5 justify-content-center">
+<script>
+    document.getElementById("customDonateBtn").onclick = () => {
+        const amount = document.getElementById("customAmount").value;
 
-<div class="col-md-2">
-<a href="/Donation/Donate?amount=5" class="btn btn-outline-primary w-100 p-3">$5</a>
-</div>
+        if (!amount || amount <= 0) {
+            alert("Please enter a valid amount");
+            return;
+        }
 
-<div class="col-md-2">
-<a href="/Donation/Donate?amount=10" class="btn btn-outline-primary w-100 p-3">$10</a>
-</div>
-
-<div class="col-md-2">
-<a href="/Donation/Donate?amount=25" class="btn btn-outline-primary w-100 p-3">$25</a>
-</div>
-
-</div>
-
-<div class="mt-4">
-<a href="/Donation/Donate?amount=50" class="btn btn-danger btn-lg px-5">
-Donate $50 ❤️
-</a>
-</div>
-
-<div class="mt-4">
-
-<input type="number" class="form-control w-25 d-inline"
-placeholder="Custom amount">
-
-<button class="btn btn-success ms-2">
-Donate
-</button>
-
-</div>
-
-<div class="mt-5 text-muted">
-Secure payments: PayPal | Credit Card
-</div>
-
-</div>
+        window.location.href = "/Donation/Donate?amount=" + amount;
+    };
+</script>

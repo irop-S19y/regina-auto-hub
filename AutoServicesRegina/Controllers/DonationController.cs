@@ -1,10 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
+using AutoServicesRegina.Models;
+using AutoServicesRegina.Data;
+
 
 namespace AutoServicesRegina.Controllers
 {
     public class DonationController : Controller
     {
+        private readonly AutoServicesReginaDbContext _context;
+
+        public DonationController(AutoServicesReginaDbContext context)
+        {
+            _context = context;
+        }
+         
+         public IActionResult Index()
+        {
+            var totalCents = _context.Donations.Sum(d => d.Amount);
+
+            decimal totalDollars = totalCents / 100m;
+
+            ViewBag.Total = totalDollars;
+
+            return View();
+        }
+
+        
         public IActionResult Donate(int amount)
         {
             var options = new SessionCreateOptions
@@ -33,8 +55,8 @@ namespace AutoServicesRegina.Controllers
 
                 Mode = "payment",
 
-                SuccessUrl = "https://localhost:5001/donation/success",
-                CancelUrl = "https://localhost:5001/donation/cancel"
+                SuccessUrl = $"http://localhost:5143/Donation/success?amount={amount}",
+                CancelUrl = "http://localhost:5143/Donation/cancel"
             };
 
             var service = new SessionService();
@@ -43,16 +65,33 @@ namespace AutoServicesRegina.Controllers
             return Redirect(session.Url);
         }
 
-        public IActionResult Success()
-        {
-            return View();
-        }
+        public IActionResult Success(int amount)
+{
+    if (TempData["PaymentSaved"] != null)
+    {
+        return View();
+    }
+
+    var donation = new DonationRecord
+    {
+        Amount = amount * 100,
+        Date = DateTime.Now
+    };
+
+    _context.Donations.Add(donation);
+    _context.SaveChanges();
+
+    TempData["PaymentSaved"] = true;
+
+    return View();
+}
+    
 
         public IActionResult Cancel()
         {
             return View();
         }
-    }
+        }
 }
         
 

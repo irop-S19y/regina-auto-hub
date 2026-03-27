@@ -18,7 +18,8 @@ namespace AutoServicesRegina.Models
 
         public string WorkingHours { get; set; } = "";
 
-        public int Rating { get; set; }
+        public double Rating { get; set; }
+        public string ImageUrl { get; set; } = "";
     }
 }
     

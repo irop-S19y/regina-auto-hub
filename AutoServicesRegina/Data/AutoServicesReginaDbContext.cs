@@ -1,5 +1,6 @@
 using System;
 using AutoServicesRegina.Data.Entities;
+using AutoServicesRegina.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -10,6 +11,10 @@ public class AutoServicesReginaDbContext : DbContext
     private const string DatabaseName = "AutoServicesReginaDb.sqlite";
 
     public DbSet<User> Users { get; set; }
+    // edd service
+    public DbSet<Service> Services { get; set; }
+    // edd Donate
+    public DbSet<DonationRecord> Donations { get; set; }
 
     public AutoServicesReginaDbContext()
     {
