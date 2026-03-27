@@ -1,28 +1,41 @@
-﻿ List<AutoServicesRegina.Models
+﻿ 
+ @model List<AutoServicesRegina.Models.Service>
+ List<AutoServicesRegina.Models
 
 <h1>All Services</h1>
 
-<a href="/AllServices/Add" class="btn btn-primary">Add Auto Service</a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Phone</th>
-            <th>Website</th>
-        </tr>
-    </thead>
+<div class="container">
+    <h1 class="mb-4">All Services</h1>
 
-    <tbody>
-    @foreach (var service in Model)
-    {
-        <tr>
-            <td>@service.Name</td>
-            <td>@service.Address</td>
-            <td>@service.City</td>
-            <td>@service.Phone</td>
-            <td>@service.Website</td>
-        </tr>
-    }
+    <a href="/AllServices/Add" class="btn btn-primary mb-4">Add Auto Service</a>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+
+                    <img src="https://via.placeholder.com/300" class="card-img-top" style="height:200px; object-fit:cover;">
+
+                    <div class="card-body">
+                        <h5>@item.Name</h5>
+
+                        <p>
+                            📍 @item.Address <br />
+                            📞 @item.Phone
+                        </p>
+
+                        <a href="@item.Website" target="_blank" class="btn btn-primary">
+                            Visit Website
+                        </a>
+                        <a href="/Comments/Service/@item.Id" class="btn btn-outline-secondary mt-2">
+                          💬 Comments (@(item.Comments?.Count ?? 0))
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoServicesRegina.Models;
 using System.Collections.Generic;
 using AutoServicesRegina.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoServicesRegina.Controllers
 {
@@ -17,7 +18,9 @@ namespace AutoServicesRegina.Controllers
 
         public IActionResult Index()
         {
-            var services = _context.Services.ToList();
+           var services = _context.Services
+            .Include(s => s.Comments)
+            .ToList();
             return View(services);
         }
         
