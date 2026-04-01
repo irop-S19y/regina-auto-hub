@@ -14,6 +14,8 @@
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Donation\" />
     <Folder Include="Views\SignUp2\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\services\" />
   </ItemGroup>
 
   <ItemGroup>

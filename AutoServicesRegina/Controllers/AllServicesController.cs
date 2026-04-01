@@ -3,6 +3,7 @@ using AutoServicesRegina.Models;
 using System.Collections.Generic;
 using AutoServicesRegina.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace AutoServicesRegina.Controllers
 {
@@ -17,13 +18,23 @@ namespace AutoServicesRegina.Controllers
         public static List<Service> services = new List<Service>();
 
         public IActionResult Index()
-        {
-           var services = _context.Services
-            .Include(s => s.Comments)
-            .ToList();
-            return View(services);
-        }
-        
+{
+    var services = _context.Services
+        .Include(s => s.Comments)
+        .Include(s => s.Ratings)
+        .ToList();
+
+    foreach (var s in services)
+    {
+        s.Rating = s.Ratings.Any()
+            ? s.Ratings.Average(r => r.Value)
+            : 0;
+
+        s.RatingCount = s.Ratings.Count;
+    }
+
+    return View(services);
+}
         public IActionResult Add()
         {
             return View();
@@ -38,5 +49,36 @@ namespace AutoServicesRegina.Controllers
 
             return RedirectToAction("Index");
         }
+         [HttpPost]
+      public IActionResult Rate([FromBody] RatingDto dto)
+{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+    if (userId == null)
+        return Unauthorized();
+
+    var existing = _context.Ratings
+        .FirstOrDefault(r => r.ServiceId == dto.ServiceId && r.UserId == userId);
+
+    if (existing != null)
+    {
+        existing.Value = dto.Value; // 
     }
+    else
+    {
+        _context.Ratings.Add(new Rating
+        {
+            ServiceId = dto.ServiceId,
+            Value = dto.Value,
+            UserId = userId
+        });
+    }
+
+    _context.SaveChanges();
+
+    return Json(new { success = true });
 }
+   
+}
+    }
+

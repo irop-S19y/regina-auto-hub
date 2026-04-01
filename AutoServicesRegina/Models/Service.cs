@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 namespace AutoServicesRegina.Models
 {
     public class Service
@@ -18,10 +19,21 @@ namespace AutoServicesRegina.Models
 
         public string WorkingHours { get; set; } = "";
 
-        public double Rating { get; set; }
+        
         public string ImageUrl { get; set; } = "";
         
         public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<Rating> Ratings { get; set; } = new();
+        
+        
+         [NotMapped]
+        public double Rating { get; set; }
+
+          [NotMapped]
+        public int RatingCount { get; set; }
+    
+    
+    
     }
 
 

@@ -9,6 +9,8 @@ namespace AutoServicesRegina.Data;
 public class AutoServicesReginaDbContext : DbContext
 {
     private const string DatabaseName = "AutoServicesReginaDb.sqlite";
+    // edd Rating
+    public DbSet<Rating> Ratings { get; set; }
 
     public DbSet<User> Users { get; set; }
     // edd service
@@ -26,7 +28,16 @@ public class AutoServicesReginaDbContext : DbContext
         : base(options)
     {
     }
+          // Add modell 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
 
+    modelBuilder.Entity<Rating>()
+        .HasIndex(r => new { r.ServiceId, r.UserId })
+        .IsUnique();
+}
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -35,4 +46,5 @@ public class AutoServicesReginaDbContext : DbContext
             optionsBuilder.UseSqlite($"Data Source={databasePath}");
         }
     }
+
 }
