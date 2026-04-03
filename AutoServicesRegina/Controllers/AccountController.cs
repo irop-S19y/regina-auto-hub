@@ -15,7 +15,7 @@ namespace AutoServicesRegina.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            if (email == "19970602irop@gmail.com" && password == "121545")
+            if (email == "19970602irop@gmail.com" && password == "1415e75")
             {
                 var claims = new List<Claim>
                 {

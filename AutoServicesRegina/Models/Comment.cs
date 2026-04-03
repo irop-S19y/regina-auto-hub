@@ -1,5 +1,5 @@
 using System;
-
+using AutoServicesRegina.Models;
 namespace AutoServicesRegina.Models;
 
     public class Comment
@@ -13,5 +13,5 @@ namespace AutoServicesRegina.Models;
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public int AutoServiceId { get; set; }
-    public Service AutoService { get; set; }
+    public Service? AutoService { get; set; }
 }
