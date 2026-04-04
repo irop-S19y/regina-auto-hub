@@ -15,7 +15,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
        
         StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
-
+         
         // Add services
         builder.Services.AddControllersWithViews();
         
@@ -28,7 +28,9 @@ public class Program
             {
                 options.LoginPath = "/Account/Login";
             });
-
+             // Add Authrization
+             builder.Services.AddAuthorization();
+             
         var app = builder.Build();
           // Seed Database
          var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<AutoServicesReginaDbContext>();
@@ -37,7 +39,7 @@ public class Program
          
               
 
-        // Configure pipeline
+            // Configure pipeline
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
