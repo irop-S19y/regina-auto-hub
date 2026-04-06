@@ -1,17 +1,18 @@
 using System;
 using AutoServicesRegina.Models;
+using AutoServicesRegina.Data.Entities;
 namespace AutoServicesRegina.Models;
 
     public class Comment
 {
     public int Id { get; set; }
 
-    public string UserName { get; set; }
+    public int UserId { get; set; }
+     public User? User { get; set; }
 
-    public string Text { get; set; }
-
+    public string Text { get; set; } = "";
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public int AutoServiceId { get; set; }
-    public Service? AutoService { get; set; }
+    public int ServiceId { get; set; }
+    public Service? Service { get; set; }
 }

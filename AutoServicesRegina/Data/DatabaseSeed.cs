@@ -206,28 +206,66 @@ public static class DatabaseSeed
                 }
             };
 
-            foreach (var newService in services)
-{
-    var existing = context.Services
-        .FirstOrDefault(s => s.Name == newService.Name);
+                        foreach (var newService in services)
+            {
+                var existing = context.Services
+                    .FirstOrDefault(s => s.Name == newService.Name);
 
-    if (existing == null)
-    {
-        context.Services.Add(newService);
-    }
-    else
-    {
-        existing.Address = newService.Address;
-        existing.Phone = newService.Phone;
-        existing.Website = newService.Website;
-        existing.Description = newService.Description;
-        existing.WorkingHours = newService.WorkingHours;
-        existing.City = newService.City;
-    }
-}
+                if (existing == null)
+                {
+                    context.Services.Add(newService);
+                }
+                else
+                {
+                    existing.Address = newService.Address;
+                    existing.Phone = newService.Phone;
+                    existing.Website = newService.Website;
+                    existing.Description = newService.Description;
+                    existing.WorkingHours = newService.WorkingHours;
+                    existing.City = newService.City;
+                }
+            }
 
-           context.SaveChanges();
+                 context.SaveChanges();
         
+                 }
+                   
+                   // ⭐ Seed Ratings
+            if (!context.Ratings.Any())
+            {
+                context.Ratings.AddRange(
+                    new Rating { ServiceId = 1, UserId = 1, Value = 5 },
+                    new Rating { ServiceId = 1, UserId = 2, Value = 4 },
+                    new Rating { ServiceId = 1, UserId = 3, Value = 5 },
+
+                    new Rating { ServiceId = 2, UserId = 4, Value = 3 },
+                    new Rating { ServiceId = 2, UserId = 5, Value = 4 },
+
+                    new Rating { ServiceId = 3, UserId = 6, Value = 5 },
+                    new Rating { ServiceId = 3, UserId = 7, Value = 5 }
+                );
+
+                context.SaveChanges();
+            }
+                
+                            // 💬 Seed Comments
+                if (!context.Comments.Any())
+                {
+                    context.Comments.AddRange(
+                        new Comment { ServiceId = 1, UserId = 1, Text = "Amazing service!" },
+                        new Comment { ServiceId = 1, UserId = 2, Text = "Very fast and friendly" },
+                        new Comment { ServiceId = 1, UserId = 3, Text = "Highly recommend!" },
+
+                        new Comment { ServiceId = 2, UserId = 4, Text = "Good but немного дорого" },
+                        new Comment { ServiceId = 2, UserId = 5, Text = "Okay service" },
+
+                        new Comment { ServiceId = 3, UserId = 6, Text = "Best oil change ever" }
+                    );
+
+                    context.SaveChanges();
         }
+               
+               
+              
     }
 }

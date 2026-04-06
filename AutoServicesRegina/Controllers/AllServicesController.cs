@@ -52,11 +52,10 @@ namespace AutoServicesRegina.Controllers
          [HttpPost]
       public IActionResult Rate([FromBody] RatingDto dto)
 {
-    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-    if (userId == null)
+    if (!int.TryParse(userIdString, out int userId))
         return Unauthorized();
-
     var existing = _context.Ratings
         .FirstOrDefault(r => r.ServiceId == dto.ServiceId && r.UserId == userId);
 

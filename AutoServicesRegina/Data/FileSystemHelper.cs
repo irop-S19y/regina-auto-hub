@@ -27,7 +27,7 @@ public class FileSystemHelper
         {
             var baseDirInfo = new DirectoryInfo(AppContext.BaseDirectory);
        
-            return baseDirInfo.Parent?.Parent?.FullName;
+            return baseDirInfo.Parent?.Parent?.FullName ?? AppContext.BaseDirectory;
         }
         else 
         {
