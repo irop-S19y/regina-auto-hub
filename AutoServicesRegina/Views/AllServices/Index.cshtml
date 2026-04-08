@@ -33,23 +33,47 @@
 
                     <div>
                     <b>@item.Rating.ToString("0.0")</b>
-                    <span>(@item.RatingCount)</span>
+                   <a href="/AllServices/Ratings/@item.Id">
+                        (@item.RatingCount)
+                   </a>
                     </div>
+                     <div class="mt-2">
+                    <b>Ratings:</b>
 
-                        <a href="@item.Website" target="_blank" class="btn btn-primary">
-                            Visit Website
-                        </a>
-                        <a href="/Comments/Service/@item.Id" class="btn btn-outline-secondary mt-2">
-                          💬 Comments (@(item.Comments?.Count ?? 0))
-                        </a>
-                    </div>
+                @if (item.Ratings != null && item.Ratings.Any())
+                {
+                    <ul style="padding-left:15px;">
+                        @foreach (var r in item.Ratings.Take(1))
+                        {
+                            <li>
+                            
+                            👤 <b>@r.User?.FirstName</b> 
+                            <span style="color:gold;">★</span> @r.Value
+                            
+                            </li>
+                        
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No ratings yet</p>
+                }
+            </div>
+            <a href="@item.Website" target="_blank" class="btn btn-primary">
+                Visit Website
+            </a>
+            <a href="/Comments/Service/@item.Id" class="btn btn-outline-secondary mt-2">
+            💬 Comments (@(item.Comments?.Count ?? 0))
+            </a>
+            </div>
 
-                   </div>
-                   </div>
-        }
-                  </div>
-                 </div>
-      <script>
+            </div>
+            </div>
+                    }
+            </div>
+            </div>
+                <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".rating").forEach(rating => {
                 const serviceId = rating.dataset.id;

@@ -1,0 +1,14 @@
+﻿@model AutoServicesRegina.Models.Service
+
+<h2>@Model.Name - Ratings</h2>
+
+<ul>
+@foreach (var r in Model.Ratings)
+{
+    <li>
+        👤 @r.User?.FirstName — ⭐ @r.Value
+    </li>
+}
+</ul>
+
+<a href="/AllServices">← Back</a>

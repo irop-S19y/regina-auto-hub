@@ -103,6 +103,7 @@ public static class DatabaseSeed
                     Website = "https://minutemuffler.com",
                     Description = "Brake repair, exhaust systems and general auto repair.",
                     WorkingHours = "Mon-Fri 8:00-17:30",
+                    ImageUrl = "/images/services/minute.jpg",
                     Rating = 5
                 },
                 new Service
@@ -114,6 +115,7 @@ public static class DatabaseSeed
                     Website = "https://kaltire.com",
                     Description = "Tire replacement and balancing.",
                     WorkingHours = "Mon-Sat 8:00-18:00",
+                    ImageUrl = "/images/services/kal.jpg",
                     Rating = 5
                 },
                 new Service
@@ -125,6 +127,7 @@ public static class DatabaseSeed
                     Website = "https://gcoc.ca",
                     Description = "Quick oil change service.",
                     WorkingHours = "Mon-Sat 8:00-18:00",
+                    ImageUrl = "/images/services/oil.jpg",
                     Rating = 4
                 },
                 new Service
@@ -136,6 +139,7 @@ public static class DatabaseSeed
                     Website = "http://www.reginaautobody.ca/",
                     Description = "Collision repair and body painting.",
                     WorkingHours = "Mon-Fri 8:00-17:00",
+                    ImageUrl = "/images/services/body.jpg",
                     Rating = 4
                 },
                 new Service
@@ -147,6 +151,7 @@ public static class DatabaseSeed
                     Website = "https://www.canadiantire.ca/en/store-details/sk/regina-north-albert-sk-275.html?utm_source=google&utm_medium=lss&utm_content=275",
                     Description = "Auto repair and tire service.",
                     WorkingHours = "Mon-Sat 8:00-20:00",
+                    ImageUrl = "/images/services/canadian.jpg",
                     Rating = 4
                 },
                 new Service
@@ -158,6 +163,7 @@ public static class DatabaseSeed
                     Website = "http://www.capitalfordlincoln.com/?utm_source=google&utm_medium=organic&utm_campaign=googlemybusiness",
                     Description = "Authorized Ford maintenance.",
                     WorkingHours = "Mon-Fri 7:30-17:30",
+                    ImageUrl = "/images/services/ford.jpg",
                     Rating = 5
                 },
                 new Service
@@ -169,6 +175,7 @@ public static class DatabaseSeed
                     Website = "https://www.midas.com/regina/store.aspx?shopnum=9803&dmanum=723",
                     Description = "Brake repair and suspension service.",
                     WorkingHours = "Mon-Fri 8:00-17:30",
+                    ImageUrl = "/images/services/midas.jpg",
                     Rating = 4
                 },
                 new Service
@@ -180,6 +187,7 @@ public static class DatabaseSeed
                     Website = "https://www.speedyglass.ca/en/service-centre/sk/regina/speedy-glass-regina-south?utm_source=google&utm_medium=local&utm_campaign=Speedy%20Glass%20Regina%20South",
                     Description = "Windshield repair and replacement.",
                     WorkingHours = "Mon-Fri 8:00-17:00",
+                    ImageUrl = "/images/services/speedyglass.jpg",
                     Rating = 5
                 },
                 new Service
@@ -191,6 +199,7 @@ public static class DatabaseSeed
                     Website = "http://www.drivenautomotive.ca/",
                     Description = "Full mechanical service.",
                     WorkingHours = "Mon-Fri 8:00-17:00",
+                    ImageUrl = "/images/services/drivenrepair.jpg",
                     Rating = 4
                 },
                 new Service
@@ -202,6 +211,7 @@ public static class DatabaseSeed
                     Website = "",
                     Description = "General auto repair.",
                     WorkingHours = "Mon-Fri 8:00-17:00",
+                    ImageUrl = "/images/services/a1.jpg",
                     Rating = 4
                 }
             };
@@ -223,44 +233,79 @@ public static class DatabaseSeed
                     existing.Description = newService.Description;
                     existing.WorkingHours = newService.WorkingHours;
                     existing.City = newService.City;
+                    existing.ImageUrl = newService.ImageUrl;
                 }
+
             }
 
                  context.SaveChanges();
         
                  }
                    
-                   // ⭐ Seed Ratings
-            if (!context.Ratings.Any())
+                                // 🔥 ОЧИСТКА
+               // context.Ratings.RemoveRange(context.Ratings);
+               // context.Comments.RemoveRange(context.Comments);
+               // context.SaveChanges();
+
+
+             // ⭐ Seed Ratings
+               if (!context.Ratings.Any())
             {
-                context.Ratings.AddRange(
+               context.Ratings.AddRange(
+                    // Service 1
                     new Rating { ServiceId = 1, UserId = 1, Value = 5 },
                     new Rating { ServiceId = 1, UserId = 2, Value = 4 },
-                    new Rating { ServiceId = 1, UserId = 3, Value = 5 },
 
-                    new Rating { ServiceId = 2, UserId = 4, Value = 3 },
-                    new Rating { ServiceId = 2, UserId = 5, Value = 4 },
+                    // Service 2
+                    new Rating { ServiceId = 2, UserId = 3, Value = 3 },
+                    new Rating { ServiceId = 2, UserId = 4, Value = 4 },
 
-                    new Rating { ServiceId = 3, UserId = 6, Value = 5 },
-                    new Rating { ServiceId = 3, UserId = 7, Value = 5 }
+                    // Service 3
+                    new Rating { ServiceId = 3, UserId = 5, Value = 5 },
+
+                    // Service 4
+                    new Rating { ServiceId = 4, UserId = 6, Value = 4 },
+                    new Rating { ServiceId = 4, UserId = 7, Value = 5 },
+
+                    // Service 5
+                    new Rating { ServiceId = 5, UserId = 8, Value = 4 },
+
+                    // Service 6
+                    new Rating { ServiceId = 6, UserId = 9, Value = 5 },
+
+                    // Service 7
+                    new Rating { ServiceId = 7, UserId = 10, Value = 4 },
+
+                    // Service 8
+                    new Rating { ServiceId = 8, UserId = 1, Value = 5 },
+
+                    // Service 9
+                    new Rating { ServiceId = 9, UserId = 2, Value = 4 },
+
+                    // Service 10
+                    new Rating { ServiceId = 10, UserId = 3, Value = 4 }
                 );
+                
 
-                context.SaveChanges();
+                  context.SaveChanges();
             }
                 
-                            // 💬 Seed Comments
-                if (!context.Comments.Any())
-                {
+                   // 💬 Seed Comments
+                    if (!context.Comments.Any())
+                    {                   
                     context.Comments.AddRange(
-                        new Comment { ServiceId = 1, UserId = 1, Text = "Amazing service!" },
-                        new Comment { ServiceId = 1, UserId = 2, Text = "Very fast and friendly" },
-                        new Comment { ServiceId = 1, UserId = 3, Text = "Highly recommend!" },
-
-                        new Comment { ServiceId = 2, UserId = 4, Text = "Good but немного дорого" },
-                        new Comment { ServiceId = 2, UserId = 5, Text = "Okay service" },
-
-                        new Comment { ServiceId = 3, UserId = 6, Text = "Best oil change ever" }
-                    );
+                    new Comment { ServiceId = 1, UserId = 1, Text = "Amazing service!" },
+                    new Comment { ServiceId = 2, UserId = 2, Text = "Good service" },
+                    new Comment { ServiceId = 3, UserId = 3, Text = "Very fast!" },
+                    new Comment { ServiceId = 4, UserId = 4, Text = "Professional work" },
+                    new Comment { ServiceId = 5, UserId = 5, Text = "Affordable prices" },
+                    new Comment { ServiceId = 6, UserId = 6, Text = "Highly recommend" },
+                    new Comment { ServiceId = 7, UserId = 7, Text = "Nice staff" },
+                    new Comment { ServiceId = 8, UserId = 8, Text = "Quick service" },
+                    new Comment { ServiceId = 9, UserId = 9, Text = "Everything was great" },
+                    new Comment { ServiceId = 10, UserId = 10, Text = "Will come again" }
+                );   
+                
 
                     context.SaveChanges();
         }

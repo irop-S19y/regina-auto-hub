@@ -22,6 +22,7 @@ namespace AutoServicesRegina.Controllers
     var services = _context.Services
         .Include(s => s.Comments)
         .Include(s => s.Ratings)
+        .ThenInclude(r => r.User)
         .ToList();
 
     foreach (var s in services)
@@ -73,11 +74,24 @@ namespace AutoServicesRegina.Controllers
         });
     }
 
-    _context.SaveChanges();
+            _context.SaveChanges();
 
-    return Json(new { success = true });
-}
+            return Json(new { success = true });
+        }
+        public IActionResult Ratings(int id)
+        {
+            var service = _context.Services
+                .Include(s => s.Ratings)
+                .ThenInclude(r => r.User)
+                .FirstOrDefault(s => s.Id == id);
+
+            if (service == null)
+                return NotFound();
+
+            return View(service);
+        }
    
-}
-    }
-
+   }
+    
+        }
+           
