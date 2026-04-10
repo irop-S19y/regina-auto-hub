@@ -78,8 +78,10 @@ namespace AutoServicesRegina.Controllers
 
             return Json(new { success = true });
         }
-        public IActionResult Ratings(int id)
+        public IActionResult Ratings(int id, int? star)
+        
         {
+    
             var service = _context.Services
                 .Include(s => s.Ratings)
                 .ThenInclude(r => r.User)
@@ -88,10 +90,40 @@ namespace AutoServicesRegina.Controllers
             if (service == null)
                 return NotFound();
 
+            // ВСІ рейтинги (для статистики)
+            var allRatings = service.Ratings;
+
+            // статистика (з усіх)
+            ViewBag.Avg = allRatings.Any() ? allRatings.Average(r => r.Value) : 0;
+            ViewBag.Count = allRatings.Count;
+
+            ViewBag.Five = allRatings.Count(r => r.Value == 5);
+            ViewBag.Four = allRatings.Count(r => r.Value == 4);
+            ViewBag.Three = allRatings.Count(r => r.Value == 3);
+            ViewBag.Two = allRatings.Count(r => r.Value == 2);
+            ViewBag.One = allRatings.Count(r => r.Value == 1);
+
+            ViewBag.SelectedStar = star;
+
+            // ФІЛЬТР (тільки для списку)
+            if (star.HasValue)
+            {
+                service.Ratings = allRatings
+                    .Where(r => r.Value == star.Value)
+                    .ToList();
+            }
+            else
+            {
+                service.Ratings = allRatings;
+            }
+
             return View(service);
+             
         }
-   
-   }
+     
+    }               
+       
+}
+            
     
-        }
-           
+                

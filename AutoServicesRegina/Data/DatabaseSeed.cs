@@ -242,7 +242,7 @@ public static class DatabaseSeed
         
                  }
                    
-                                // 🔥 ОЧИСТКА
+                                // 🔥 clean
                // context.Ratings.RemoveRange(context.Ratings);
                // context.Comments.RemoveRange(context.Comments);
                // context.SaveChanges();

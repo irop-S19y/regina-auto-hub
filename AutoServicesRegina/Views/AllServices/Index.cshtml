@@ -37,29 +37,7 @@
                         (@item.RatingCount)
                    </a>
                     </div>
-                     <div class="mt-2">
-                    <b>Ratings:</b>
-
-                @if (item.Ratings != null && item.Ratings.Any())
-                {
-                    <ul style="padding-left:15px;">
-                        @foreach (var r in item.Ratings.Take(1))
-                        {
-                            <li>
-                            
-                            👤 <b>@r.User?.FirstName</b> 
-                            <span style="color:gold;">★</span> @r.Value
-                            
-                            </li>
-                        
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p>No ratings yet</p>
-                }
-            </div>
+                     
             <a href="@item.Website" target="_blank" class="btn btn-primary">
                 Visit Website
             </a>

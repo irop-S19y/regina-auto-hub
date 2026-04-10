@@ -2,13 +2,103 @@
 
 <h2>@Model.Name - Ratings</h2>
 
-<ul>
-@foreach (var r in Model.Ratings)
-{
-    <li>
-        👤 @r.User?.FirstName — ⭐ @r.Value
-    </li>
-}
-</ul>
+<div style="margin-bottom:20px;">
+    <h1>⭐ @ViewBag.Avg.ToString("0.0")</h1>
+    <p>@ViewBag.Count reviews</p>
 
-<a href="/AllServices">← Back</a>
+    <div class="star-filter">
+        <a href="/AllServices/Ratings/@Model.Id?star=5"
+           style="@(ViewBag.SelectedStar == 5 ? "font-weight:bold; color:#e0a800;" : "")">
+            5 ⭐ — @ViewBag.Five
+        </a>
+    </div>
+
+    <div class="star-filter">
+        <a href="/AllServices/Ratings/@Model.Id?star=4"
+           style="@(ViewBag.SelectedStar == 4 ? "font-weight:bold; color:#e0a800;" : "")">
+            4 ⭐ — @ViewBag.Four
+        </a>
+    </div>
+
+    <div class="star-filter">
+        <a href="/AllServices/Ratings/@Model.Id?star=3"
+           style="@(ViewBag.SelectedStar == 3 ? "font-weight:bold; color:#e0a800;" : "")">
+            3 ⭐ — @ViewBag.Three
+        </a>
+    </div>
+
+    <div class="star-filter">
+        <a href="/AllServices/Ratings/@Model.Id?star=2"
+           style="@(ViewBag.SelectedStar == 2 ? "font-weight:bold; color:#e0a800;" : "")">
+            2 ⭐ — @ViewBag.Two
+        </a>
+    </div>
+
+    <div class="star-filter">
+        <a href="/AllServices/Ratings/@Model.Id?star=1"
+           style="@(ViewBag.SelectedStar == 1 ? "font-weight:bold; color:#e0a800;" : "")">
+            1 ⭐ — @ViewBag.One
+        </a>
+    </div>
+
+    <h4>All reviews:</h4>
+    @if (Model.Ratings.Any())
+    {
+    <ul>
+    @foreach (var r in Model.Ratings)
+    {
+        <li style="margin-bottom:10px;">
+            👤 <b>@r.User?.FirstName</b><br />
+
+            <span style="color:#e0a800;">
+                @(new string('★', r.Value))
+                @(new string('☆', 5 - r.Value))
+            </span>
+        </li>
+    }
+    </ul>
+    }
+    else
+    {
+        <p>No reviews for this rating</p>
+    }
+
+
+    <a href="/AllServices/Ratings/@Model.Id" class="btn btn-primary mt-2">
+        Show all reviews
+    </a>
+
+    <a href="/AllServices" class="back-btn mt-2">
+    ← Back
+    </a>
+
+    <style>
+    .star-filter a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .star-filter a:hover {
+        color: #e0a800;
+    }
+    </style>
+
+    <style>
+    .back-btn {
+    background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+    color: #f5c542;
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #f5c542;
+    transition: all 0.25s ease;
+    display: inline-block;
+}
+
+    .back-btn:hover {
+    background: #f5c542;
+    color: black;
+    transform: translateX(-3px);
+}
+</style>
