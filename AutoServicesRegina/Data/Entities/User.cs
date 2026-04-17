@@ -12,6 +12,8 @@ public class User
     public DateTime DateOfBirth { get; set; }
     public string PasswordHash { get; set; } = string.Empty;
     public string Role { get; set; } = "User";
+    public string? ResetToken { get; set; }
+    public DateTime? ResetTokenExpiry { get; set; }
 }
 
 
