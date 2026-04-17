@@ -24,13 +24,14 @@
                             📍 @item.Address <br />
                             📞 @item.Phone
                         </p>
-                        <div class="rating" data-id="@item.Id">
+                      
+                    <div class="rating" data-id="@item.Id">
                         @for (int i = 1; i <= 5; i++)
                         {
                             <span class="star" data-value="@i">★</span>
                         }
-                    </div>
-
+                    </div> 
+                    
                     <div>
                     <b>@item.Rating.ToString("0.0")</b>
                    <a href="/AllServices/Ratings/@item.Id">
@@ -41,9 +42,7 @@
             <a href="@item.Website" target="_blank" class="btn btn-primary">
                 Visit Website
             </a>
-            <a href="/Comments/Service/@item.Id" class="btn btn-outline-secondary mt-2">
-            💬 Comments (@(item.Comments?.Count ?? 0))
-            </a>
+        
             </div>
 
             </div>
@@ -51,13 +50,24 @@
                     }
             </div>
             </div>
+               
                 <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".rating").forEach(rating => {
-                const serviceId = rating.dataset.id;
+                    const isAuthenticated = @(User?.Identity?.IsAuthenticated == true ? "true" : "false");
+                </script>
+                                
+                <script>
+             document.addEventListener("DOMContentLoaded", function () {
+             document.querySelectorAll(".rating").forEach(rating => {
+             const serviceId = rating.dataset.id;
 
-        rating.querySelectorAll(".star").forEach(star => {
-            star.addEventListener("click", () => {
+             rating.querySelectorAll(".star").forEach(star => {
+             star.addEventListener("click", () => {
+
+                if (!isAuthenticated) {
+                    window.location.href = "/Account/Login";
+                    return;
+                }
+
                 const value = star.dataset.value;
 
                 fetch('/AllServices/Rate', {
@@ -70,23 +80,35 @@
                         value: value
                     })
                 })
-                    .then(res => {
-                    if (res.ok) location.reload();
-                     else alert("Login required");
-                 });
-                });
-                });
-                });
-                 });
-              </script>
-              <style>
-                .star {
-                    font-size: 20px;
-                    cursor: pointer;
-                    color: gray;
-                }
+                .then(res => {
+                    if (res.status === 401) {
+                        window.location.href = "/Account/Login";
+                        return;
+                    }
 
-                .star:hover {
-                    color: gold;
-                }
-                </style>
+                    if (res.ok) {
+                        rating.querySelectorAll(".star").forEach(s => {
+                            s.style.color = s.dataset.value <= value ? "gold" : "gray";
+                        });
+                    }
+                });
+
+            });
+        });
+    });
+});
+             </script>
+              
+            <style>
+            .star {
+                font-size: 22px;
+                cursor: pointer;
+                color: lightgray;
+                transition: 0.2s;
+            }
+
+            .star:hover {
+                color: gold;
+            }
+            </style>
+                                                

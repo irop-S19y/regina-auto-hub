@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AutoServicesRegina.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoServicesRegina.Controllers
 {
@@ -51,6 +52,7 @@ namespace AutoServicesRegina.Controllers
             return RedirectToAction("Index");
         }
          [HttpPost]
+         [Authorize]
       public IActionResult Rate([FromBody] RatingDto dto)
 {
     var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -85,6 +87,10 @@ namespace AutoServicesRegina.Controllers
             var service = _context.Services
                 .Include(s => s.Ratings)
                 .ThenInclude(r => r.User)
+                
+                .Include(s => s.Comments)
+                .ThenInclude(c => c.User)
+                
                 .FirstOrDefault(s => s.Id == id);
 
             if (service == null)

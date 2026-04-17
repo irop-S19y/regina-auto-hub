@@ -24,10 +24,18 @@ public class Program
         
 
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(options =>
+        .AddCookie(options =>
+       {
+            options.LoginPath = "/Account/Login";
+
+            options.Events.OnRedirectToLogin = context =>
             {
-                options.LoginPath = "/Account/Login";
-            });
+                var returnUrl = context.Request.Path + context.Request.QueryString;
+
+                context.Response.Redirect($"/Account/Login?returnUrl={returnUrl}&message=login_required");
+                return Task.CompletedTask;
+            };
+        });
              // Add Authrization
              builder.Services.AddAuthorization();
              
