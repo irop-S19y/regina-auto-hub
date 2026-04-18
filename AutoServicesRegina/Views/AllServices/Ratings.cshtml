@@ -80,7 +80,7 @@
 
     <h3>Leave a review</h3>
 
-        @if (User.Identity.IsAuthenticated)
+       @if (User.Identity != null && User.Identity.IsAuthenticated)
         {
             <div id="review-form">
 
@@ -193,3 +193,27 @@
     });
 }
      </script>
+
+     <script>
+        let selectedRating = 0;
+
+        // 🔥 беремо rating з URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const ratingFromUrl = urlParams.get("rating");
+
+        if (ratingFromUrl) {
+            selectedRating = parseInt(ratingFromUrl);
+
+            document.querySelectorAll("#stars .star").forEach(s => {
+                s.style.color = s.dataset.value <= selectedRating ? "gold" : "gray";
+            });
+        }
+        </script>
+
+        <script>
+            // 🔥 авто фокус на textarea
+            const textarea = document.getElementById("commentText");
+            if (textarea) {
+                textarea.focus();
+            }
+       </script>

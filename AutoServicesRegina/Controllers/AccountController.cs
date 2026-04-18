@@ -68,7 +68,7 @@ namespace AutoServicesRegina.Controllers
             
        
        
-       
+        // LOGIN POST
        
         public IActionResult Login()
         {
@@ -77,7 +77,7 @@ namespace AutoServicesRegina.Controllers
          
         
             [HttpPost]
-            public async Task<IActionResult> Login(string email, string password)
+            public async Task<IActionResult> Login(string email, string password, string? returnUrl)
             {
                 var user = _context.Users
                     .FirstOrDefault(u => u.EmailAddres == email);
@@ -99,6 +99,7 @@ namespace AutoServicesRegina.Controllers
 
                 var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.FirstName),
                 new Claim(ClaimTypes.Email, user.EmailAddres),
                 new Claim(ClaimTypes.Role, user.Role)
@@ -107,10 +108,21 @@ namespace AutoServicesRegina.Controllers
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(principal);
+            await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            principal
+            );
 
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+           {
+            
+             return Redirect(returnUrl);
+           
+           }  
+           
             return RedirectToAction("Index", "Home");
-}
+            
+           } 
          
          // GET
         public IActionResult Register()

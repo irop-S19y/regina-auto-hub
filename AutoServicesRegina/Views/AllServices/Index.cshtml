@@ -51,12 +51,11 @@
             </div>
             </div>
                
-                <script>
-                    const isAuthenticated = @(User?.Identity?.IsAuthenticated == true ? "true" : "false");
-                </script>
-                                
-                <script>
+            <script>
              document.addEventListener("DOMContentLoaded", function () {
+
+             const isAuthenticated = @(User?.Identity?.IsAuthenticated == true ? "true" : "false");
+
              document.querySelectorAll(".rating").forEach(rating => {
              const serviceId = rating.dataset.id;
 
@@ -68,7 +67,7 @@
                     return;
                 }
 
-                const value = star.dataset.value;
+                const value = parseInt(star.dataset.value);
 
                 fetch('/AllServices/Rate', {
                     method: 'POST',
@@ -87,17 +86,16 @@
                     }
 
                     if (res.ok) {
-                        rating.querySelectorAll(".star").forEach(s => {
-                            s.style.color = s.dataset.value <= value ? "gold" : "gray";
-                        });
+                        window.location.href = `/AllServices/Ratings/${serviceId}?rating=${value}`;
                     }
-                });
+                })
+                     .catch(err => console.log(err));
 
             });
         });
     });
 });
-             </script>
+           </script>
               
             <style>
             .star {
