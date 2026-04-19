@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AutoServicesRegina.Models
 {
     public class Service
@@ -31,7 +32,9 @@ namespace AutoServicesRegina.Models
 
           [NotMapped]
         public int RatingCount { get; set; }
-    
+        
+       [NotMapped]
+        public int MyRating { get; set; }
     
     
     }

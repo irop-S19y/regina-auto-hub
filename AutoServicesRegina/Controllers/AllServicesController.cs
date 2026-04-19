@@ -26,6 +26,19 @@ namespace AutoServicesRegina.Controllers
         .ThenInclude(r => r.User)
         .ToList();
 
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (int.TryParse(userIdString, out int userId))
+{
+        foreach (var s in services)
+        {
+            var myRating = s.Ratings
+                .FirstOrDefault(r => r.UserId == userId);
+
+            s.MyRating = myRating?.Value ?? 0;
+        }
+    }
+
     foreach (var s in services)
     {
         s.Rating = s.Ratings.Any()
@@ -121,6 +134,17 @@ namespace AutoServicesRegina.Controllers
             else
             {
                 service.Ratings = allRatings;
+            }
+
+             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+             if (int.TryParse(userIdString, out int userId))
+           
+            {
+                var myRating = service.Ratings
+                    .FirstOrDefault(r => r.UserId == userId);
+
+                ViewBag.MyRating = myRating?.Value ?? 0;
             }
 
             return View(service);

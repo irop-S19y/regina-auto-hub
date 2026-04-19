@@ -62,6 +62,12 @@
                     <br />
 
                     💬 @(comment?.Text ?? "No comment")
+
+                   <br />
+
+                    <small style="color:gray;">
+                        @(comment?.CreatedAt.ToString("dd MMM yyyy • HH:mm"))
+                    </small>
                 </li>
             }
             </ul>
@@ -146,7 +152,12 @@
    </style>
     
     <script>
-    let selectedRating = 0;
+   
+    let selectedRating = @ViewBag.MyRating;
+     
+    document.querySelectorAll("#stars .star").forEach(s => {
+    s.style.color = s.dataset.value <= selectedRating ? "gold" : "gray";
+    });
 
     // якщо форма існує (тобто користувач залогінений)
     if (document.getElementById("review-form")) {
@@ -195,22 +206,6 @@
      </script>
 
      <script>
-        let selectedRating = 0;
-
-        // 🔥 беремо rating з URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const ratingFromUrl = urlParams.get("rating");
-
-        if (ratingFromUrl) {
-            selectedRating = parseInt(ratingFromUrl);
-
-            document.querySelectorAll("#stars .star").forEach(s => {
-                s.style.color = s.dataset.value <= selectedRating ? "gold" : "gray";
-            });
-        }
-        </script>
-
-        <script>
             // 🔥 авто фокус на textarea
             const textarea = document.getElementById("commentText");
             if (textarea) {

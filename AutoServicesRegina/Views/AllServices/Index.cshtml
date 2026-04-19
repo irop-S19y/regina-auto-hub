@@ -25,7 +25,7 @@
                             📞 @item.Phone
                         </p>
                       
-                    <div class="rating" data-id="@item.Id">
+                    <div class="rating" data-id="@item.Id" data-my-rating="@item.MyRating">
                         @for (int i = 1; i <= 5; i++)
                         {
                             <span class="star" data-value="@i">★</span>
@@ -52,12 +52,22 @@
             </div>
                
             <script>
+             
              document.addEventListener("DOMContentLoaded", function () {
-
-             const isAuthenticated = @(User?.Identity?.IsAuthenticated == true ? "true" : "false");
+             
+             const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
 
              document.querySelectorAll(".rating").forEach(rating => {
              const serviceId = rating.dataset.id;
+
+             const myRating = parseInt(rating.dataset.myRating);
+
+                // 🔥 highlight on page load
+                if (myRating > 0) {
+                    rating.querySelectorAll(".star").forEach(s => {
+                        s.style.color = s.dataset.value <= myRating ? "gold" : "lightgray";
+                    });
+                }
 
              rating.querySelectorAll(".star").forEach(star => {
              star.addEventListener("click", () => {
