@@ -1,15 +1,30 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AutoServicesRegina.Models;
-
+using Microsoft.EntityFrameworkCore;
+using AutoServicesRegina.Data;
 namespace AutoServicesRegina.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly AutoServicesReginaDbContext _context;
+
+    public HomeController(AutoServicesReginaDbContext context)
     {
-        return View();
+        _context = context;
     }
+
+    public IActionResult Index()
+   
+{
+    var topServices = _context.Services
+    .Include(s => s.Ratings)
+    .OrderByDescending(s => s.Ratings.Any() ? s.Ratings.Average(r => r.Value) : 0)
+    .Take(3)
+    .ToList();
+
+    return View(topServices);
+}
 
     public IActionResult Privacy()
     {

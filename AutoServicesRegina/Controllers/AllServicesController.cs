@@ -18,13 +18,21 @@ namespace AutoServicesRegina.Controllers
 }
         public static List<Service> services = new List<Service>();
 
-        public IActionResult Index()
-{
-    var services = _context.Services
+        public IActionResult Index(string search)
+      {
+        var query = _context.Services
         .Include(s => s.Comments)
         .Include(s => s.Ratings)
         .ThenInclude(r => r.User)
-        .ToList();
+        .AsQueryable();
+
+            // 🔍 name 
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(s => s.Name.Contains(search));
+            }
+
+            var services = query.ToList();
 
         var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -50,13 +58,15 @@ namespace AutoServicesRegina.Controllers
 
     return View(services);
 }
+        [Authorize(Roles = "Admin")]
         public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Add(Service service)
         {
             _context.Services.Add(service);

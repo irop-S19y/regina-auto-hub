@@ -8,7 +8,10 @@
 <div class="container">
     <h1 class="mb-4">All Services</h1>
 
-    <a href="/AllServices/Add" class="btn btn-primary mb-4">Add Auto Service</a>
+    @if (User.IsInRole("Admin"))
+    {
+     <a href="/AllServices/Add" class="btn btn-primary mb-4">Add Auto Service</a>
+    }
 
     <div class="row">
         @foreach (var item in Model)
@@ -20,10 +23,15 @@
                     <div class="card-body">
                         <h5>@item.Name</h5>
 
-                        <p>
-                            📍 @item.Address <br />
-                            📞 @item.Phone
-                        </p>
+                     <p>
+                        📍 
+                        <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(item.Address)" 
+                        target="_blank">
+                            @item.Address
+                        </a>
+                        <br />
+                        📞 @item.Phone
+                    </p>
                       
                     <div class="rating" data-id="@item.Id" data-my-rating="@item.MyRating">
                         @for (int i = 1; i <= 5; i++)
@@ -52,25 +60,22 @@
             </div>
                
             <script>
-             
-             document.addEventListener("DOMContentLoaded", function () {
-             
-             const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
+          document.addEventListener("DOMContentLoaded", function () {
 
-             document.querySelectorAll(".rating").forEach(rating => {
-             const serviceId = rating.dataset.id;
+          const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
 
-             const myRating = parseInt(rating.dataset.myRating);
+          document.querySelectorAll(".rating").forEach(rating => {
 
-                // 🔥 highlight on page load
-                if (myRating > 0) {
-                    rating.querySelectorAll(".star").forEach(s => {
-                        s.style.color = s.dataset.value <= myRating ? "gold" : "lightgray";
-                    });
-                }
+          const serviceId = rating.dataset.id;
+          const myRating = parseInt(rating.dataset.myRating) || 0;
 
-             rating.querySelectorAll(".star").forEach(star => {
-             star.addEventListener("click", () => {
+          // paint the stars
+          rating.querySelectorAll(".star").forEach(s => {
+            s.style.color = s.dataset.value <= myRating ? "gold" : "lightgray";
+         });
+
+           rating.querySelectorAll(".star").forEach(star => {
+            star.addEventListener("click", () => {
 
                 if (!isAuthenticated) {
                     window.location.href = "/Account/Login";
@@ -96,17 +101,30 @@
                     }
 
                     if (res.ok) {
-                        window.location.href = `/AllServices/Ratings/${serviceId}?rating=${value}`;
+                        window.location.reload(); // 
                     }
-                })
-                     .catch(err => console.log(err));
-
+                });
             });
         });
+
     });
 });
-           </script>
-              
+
+        // 🔥 FIX для back/cache
+        window.addEventListener("pageshow", function () {
+        document.querySelectorAll(".rating").forEach(rating => {
+
+        const myRating = parseInt(rating.dataset.myRating) || 0;
+
+        rating.querySelectorAll(".star").forEach(s => {
+            s.style.color = s.dataset.value <= myRating ? "gold" : "lightgray";
+        });
+
+    });
+});
+         </script>
+           
+            
             <style>
             .star {
                 font-size: 22px;

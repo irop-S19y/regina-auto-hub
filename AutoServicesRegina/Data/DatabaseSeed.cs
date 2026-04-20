@@ -2,7 +2,7 @@ using System;
 using AutoServicesRegina.Data.Entities;
 using AutoServicesRegina.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace AutoServicesRegina.Data;
 
@@ -309,7 +309,35 @@ public static class DatabaseSeed
 
                     context.SaveChanges();
         }
-               
+            
+             var allUsers = context.Users.ToList();
+
+             var hasher = new PasswordHasher<User>();
+
+             foreach (var u in allUsers)
+            {
+             // ADD passwordHash
+                if (string.IsNullOrEmpty(u.PasswordHash))
+            {
+                u.PasswordHash = hasher.HashPassword(u, "123456");
+            }
+
+                //  add rolle
+                if (string.IsNullOrEmpty(u.Role))
+                {
+                    u.Role = "User";
+                }
+            }
+
+                var me = context.Users.FirstOrDefault(u =>
+                    u.EmailAddres == "19970602irop@gmail.com"
+                );
+
+                if (me != null)
+                    me.Role = "Admin";
+
+                context.SaveChanges();
+              
                
               
     }
