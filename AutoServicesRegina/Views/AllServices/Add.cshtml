@@ -1,45 +1,47 @@
-﻿<h2>Add Auto Services</h2>
+﻿@model AutoServicesRegina.Models.Service
+
+<h2>Add Auto Services</h2>
 
 <form method="post">
 
 <div class="mb-3">
 <label>Name</label>
-<input class="form-control" name="Name">
+<input class="form-control" asp-for="Name">
 </div>
 
 <div class="mb-3">
 <label>Address</label>
-<input class="form-control" name="Address">
+<input class="form-control" asp-for="Address">
 </div>
 
 <div class="mb-3">
 <label>City</label>
-<input class="form-control" name="City">
+<input class="form-control" asp-for="City">
 </div>
 
 <div class="mb-3">
 <label>Phone</label>
-<input class="form-control" name="Phone">
+<input class="form-control" asp-for="Phone">
 </div>
 
 <div class="mb-3">
 <label>Website</label>
-<input class="form-control" name="Website">
+<input class="form-control" asp-for="Website">
 </div>
 
 <div class="mb-3">
 <label>Description</label>
-<input class="form-control" name="Description">
+<input class="form-control" asp-for="Description">
 </div>
 
 <div class="mb-3">
 <label>Working Hours</label>
-<input class="form-control" name="WorkingHours">
+<input class="form-control" asp-for="WorkingHours">
 </div>
 
 <div class="mb-3">
-<label>Rating</label>
-<input class="form-control" name="Rating">
+<label>Image URL</label>
+<input class="form-control" asp-for="ImageUrl">
 </div>
 
 <button class="btn btn-primary">Add Services</button>

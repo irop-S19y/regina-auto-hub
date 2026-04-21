@@ -58,22 +58,77 @@ namespace AutoServicesRegina.Controllers
 
     return View(services);
 }
+        // GET
+       [Authorize(Roles = "Admin")]
+       public IActionResult Edit(int id)
+       {
+        var service = _context.Services.Find(id);
+
+            if (service == null)
+                return NotFound();
+
+            return View(service);
+        }
+
+         [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(Service service)
+        {
+            _context.Services.Update(service);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+          
+          //GET
+         [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var service = _context.Services.Find(id);
+
+            if (service == null)
+                return NotFound();
+
+            return View(service);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var service = _context.Services.Find(id);
+
+            if (service == null)
+                return NotFound();
+
+            _context.Services.Remove(service);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
         [Authorize(Roles = "Admin")]
         public IActionResult Add()
         {
             return View();
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
+         [HttpPost]
+            [Authorize(Roles = "Admin")]
+            public IActionResult Add(Service service)
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(service);
+                }
 
-        public IActionResult Add(Service service)
-        {
-            _context.Services.Add(service);
-            _context.SaveChanges();
+                _context.Services.Add(service);
+                _context.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+                return RedirectToAction("Index");
+            }
+         
          [HttpPost]
          [Authorize]
       public IActionResult Rate([FromBody] RatingDto dto)

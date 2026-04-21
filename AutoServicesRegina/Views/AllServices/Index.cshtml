@@ -50,6 +50,13 @@
             <a href="@item.Website" target="_blank" class="btn btn-primary">
                 Visit Website
             </a>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a href="/AllServices/Edit/@item.Id" class="btn btn-warning btn-sm mt-2">Edit</a>
+
+                <a href="/AllServices/Delete/@item.Id" class="btn btn-danger btn-sm mt-2">Delete</a>
+            }
         
             </div>
 

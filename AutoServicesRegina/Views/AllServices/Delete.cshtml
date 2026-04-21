@@ -1,0 +1,14 @@
+﻿@model AutoServicesRegina.Models.Service
+
+<h2>Delete Service</h2>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete <b>@Model.Name</b>?
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button class="btn btn-danger">Yes, delete</button>
+    <a href="/AllServices" class="btn btn-secondary">Cancel</a>
+</form>
