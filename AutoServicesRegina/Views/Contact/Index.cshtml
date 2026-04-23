@@ -6,6 +6,10 @@
 
 <h1 class="text-center mb-4">Contact Us</h1>
 
+<button onclick="history.back()" class="btn btn-dark">
+    Back
+</button>
+
 <p class="text-center">
 If you encounter any difficulties while using our platform or have ideas
 for improving the website, please feel free to contact us.
@@ -21,8 +25,8 @@ for improving the website, please feel free to contact us.
 
 <p>
 <strong>Email:</strong>
-<a href="mailto:your_email@example.com">
-your_email@example.com
+<a href="mailto:19970602irop@gmail.com">
+    19970602irop@gmail.com
 </a>
 </p>
 
@@ -33,21 +37,22 @@ your_email@example.com
 
 <h4>Send Us a Message</h4>
 
-<form>
+<!-- ✅ FORM -->
+<form asp-controller="Contact" asp-action="SendMessage" method="post">
 
 <div class="mb-3">
 <label class="form-label">Your Name</label>
-<input type="text" class="form-control">
+<input type="text" name="name" class="form-control" required>
 </div>
 
 <div class="mb-3">
 <label class="form-label">Email</label>
-<input type="email" class="form-control">
+<input type="email" name="email" class="form-control" required>
 </div>
 
 <div class="mb-3">
 <label class="form-label">Message</label>
-<textarea class="form-control" rows="4"></textarea>
+<textarea name="message" class="form-control" rows="4" required></textarea>
 </div>
 
 <button class="btn btn-primary">
@@ -55,6 +60,14 @@ Send Message
 </button>
 
 </form>
+
+<!-- ✅ SUCCESS MESSAGE -->
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success mt-3">
+        @ViewBag.Success
+    </div>
+}
 
 </div>
 

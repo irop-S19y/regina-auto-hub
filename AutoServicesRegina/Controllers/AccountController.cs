@@ -13,31 +13,37 @@ namespace AutoServicesRegina.Controllers
     public class AccountController : Controller
     {
         private readonly AutoServicesReginaDbContext _context;
+        private readonly IConfiguration _configuration;
          
+         public AccountController(AutoServicesReginaDbContext context, IConfiguration configuration)
+            {
+                _context = context;
+                _configuration = configuration;
+            }
          
-         public AccountController(AutoServicesReginaDbContext context)
+
+       private void SendEmail(string to, string link)
         {
-            _context = context;
+            var config = _configuration.GetSection("Mailtrap");
+
+            var port = int.TryParse(config["Port"], out var p) ? p : 2525;
+
+            var client = new SmtpClient(config["Host"], port)
+            {
+                Credentials = new NetworkCredential(config["User"], config["Pass"]),
+                EnableSsl = true
+            };
+
+            var message = new MailMessage("test@mailtrap.io", to)
+            {
+                Subject = "Reset your password",
+                Body = $"<p>Click the link below to reset your password:</p><a href='{link}'>Reset Password</a>",
+                IsBodyHtml = true
+            };
+
+            client.Send(message);
         }
-         
-
-        private void SendEmail(string to, string link)
-         {
-        var client = new SmtpClient("sandbox.smtp.mailtrap.io", 2525)
-        {
-            Credentials = new NetworkCredential("8d83724222e434", "dbf7308c281888"),
-            EnableSsl = true
-        };
-
-        var message = new MailMessage("no-reply@autoservices.com", to)
-        {
-            Subject = "Reset your password",
-            Body = $"<p>Click the link below to reset your password:</p><a href='{link}'>Reset Password</a>",
-            IsBodyHtml = true
-        };
-
-        client.Send(message);
-        }
+        
         
         public IActionResult ForgotPassword()
         {
