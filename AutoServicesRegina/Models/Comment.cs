@@ -15,4 +15,8 @@ namespace AutoServicesRegina.Models;
 
     public int ServiceId { get; set; }
     public Service? Service { get; set; }
+    
+    public int? RatingId { get; set; }
+    public Rating? Rating { get; set; }
+
 }
