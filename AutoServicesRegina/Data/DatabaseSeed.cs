@@ -10,6 +10,8 @@ public static class DatabaseSeed
 {
     public static void Seed(AutoServicesReginaDbContext context)
     {
+        var adminEmail = Environment.GetEnvironmentVariable("SEED_ADMIN_EMAIL") ?? "admin@test.com";
+
         if (!context.Users.Any())
         {
             var users = new List<User>
@@ -89,9 +91,71 @@ public static class DatabaseSeed
             context.Users.AddRange(users);
             context.SaveChanges();
         }
+           
+            var admin = context.Users
+            .FirstOrDefault(u => u.EmailAddres == adminEmail);
 
-        
-        {
+            var hasher = new PasswordHasher<User>();
+            var seedPassword = Environment.GetEnvironmentVariable("SEED_PASSWORD") ?? "Test123!";
+
+            if (admin == null)
+            {
+                admin = new User
+                {
+                    FirstName = "Admin",
+                    LastName = "User",
+                    EmailAddres = adminEmail,
+                    DateOfBirth = new DateTime(1990, 1, 1),
+                    Role = "Admin"
+                };
+
+                admin.PasswordHash = hasher.HashPassword(admin, seedPassword);
+
+                context.Users.Add(admin);
+            }
+            else
+            {
+                admin.Role = "Admin";
+
+                if (string.IsNullOrEmpty(admin.PasswordHash))
+                {
+                    admin.PasswordHash = hasher.HashPassword(admin, seedPassword);
+                }
+            }
+
+            context.SaveChanges();
+                    
+             var allUsers = context.Users.ToList();
+
+             
+             foreach (var u in allUsers)
+            {
+             // ADD passwordHash
+                
+             
+
+                if (string.IsNullOrEmpty(u.PasswordHash))
+                {
+                    u.PasswordHash = hasher.HashPassword(u, seedPassword);
+                }
+                //  add rolle
+                if (string.IsNullOrEmpty(u.Role))
+                {
+                    u.Role = "User";
+                }
+            }
+
+
+                context.SaveChanges();
+              
+             
+             
+             
+             
+             
+             
+             
+             {
             var services = new List<Service>
             {
                 new Service
@@ -216,7 +280,7 @@ public static class DatabaseSeed
                 }
             };
 
-                        foreach (var newService in services)
+                foreach (var newService in services)
             {
                 var existing = context.Services
                     .FirstOrDefault(s => s.Name == newService.Name);
@@ -308,35 +372,9 @@ public static class DatabaseSeed
                 
 
                     context.SaveChanges();
-        }
-            
-             var allUsers = context.Users.ToList();
-
-             var hasher = new PasswordHasher<User>();
-
-             foreach (var u in allUsers)
-            {
-             // ADD passwordHash
-                if (string.IsNullOrEmpty(u.PasswordHash))
-            {
-                u.PasswordHash = hasher.HashPassword(u, "123456");
-            }
-
-                //  add rolle
-                if (string.IsNullOrEmpty(u.Role))
-                {
-                    u.Role = "User";
                 }
-            }
-
-                var me = context.Users.FirstOrDefault(u =>
-                    u.EmailAddres == "19970602irop@gmail.com"
-                );
-
-                if (me != null)
-                    me.Role = "Admin";
-
-                context.SaveChanges();
+            
+            
               
                
               
