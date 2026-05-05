@@ -10,5 +10,5 @@ public class DonationRecord
 
     public DateTime Date { get; set; } = DateTime.Now;
 
-    public string? StripePaymentId { get; set; }
+   public string? StripeSessionId { get; set; }
 }

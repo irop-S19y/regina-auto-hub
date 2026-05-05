@@ -32,7 +32,7 @@ namespace AutoServicesRegina.Controllers
                 query = query.Where(s => s.Name.Contains(search));
             }
 
-            var services = query.ToList();
+        var services = query.ToList();
 
         var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 

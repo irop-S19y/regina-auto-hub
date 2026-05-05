@@ -33,8 +33,16 @@ namespace AutoServicesRegina.Controllers
                 Credentials = new NetworkCredential(config["User"], config["Pass"]),
                 EnableSsl = true
             };
+           
+    
+           var fromEmail = config["FromEmail"];
 
-            var message = new MailMessage("test@mailtrap.io", to)
+          if (string.IsNullOrEmpty(fromEmail))
+            {
+                throw new Exception("FromEmail is not configured");
+            }
+
+            var message = new MailMessage(fromEmail, to)
             {
                 Subject = "Reset your password",
                 Body = $"<p>Click the link below to reset your password:</p><a href='{link}'>Reset Password</a>",
@@ -64,8 +72,9 @@ namespace AutoServicesRegina.Controllers
             user.ResetTokenExpiry = DateTime.UtcNow.AddHours(1);
 
             _context.SaveChanges();
-
-            var link = $"http://localhost:5143/Account/ResetPassword?token={user.ResetToken}";
+           
+            var domain = _configuration["AppUrl"];
+            var link = $"{domain}/Account/ResetPassword?token={user.ResetToken}";
 
             SendEmail(email, link);
 
