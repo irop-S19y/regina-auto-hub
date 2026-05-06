@@ -65,7 +65,20 @@
                     }
             </div>
             </div>
-               
+               <div id="loginAlert" style="
+                display:none;
+                position:fixed;
+                top:20px;
+                left:50%;
+                transform:translateX(-50%);
+                z-index:9999;
+                padding:12px 20px;
+                border-radius:8px;
+                font-weight:500;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            ">
+            </div>
+
             <script>
           document.addEventListener("DOMContentLoaded", function () {
 
@@ -85,10 +98,23 @@
             star.addEventListener("click", () => {
 
                 if (!isAuthenticated) {
-                    window.location.href = "/Account/Login";
-                    return;
-                }
 
+                const alertBox = document.getElementById("loginAlert");
+
+                alertBox.className = "alert alert-warning text-center";
+                alertBox.innerText = "Please login to leave a rating ⭐";
+                alertBox.style.display = "block";
+
+                const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+
+                setTimeout(() => {
+                    alertBox.style.display = "none";
+                    window.location.href = `/Account/Login?message=login_required&returnUrl=${returnUrl}`;
+                }, 1200);
+
+                return;
+                }
+               
                 const value = parseInt(star.dataset.value);
 
                 fetch('/AllServices/Rate', {

@@ -202,8 +202,22 @@
     });
 
     // кнопка submit
-    document.getElementById("submitReview").addEventListener("click", () => {
+         document.getElementById("submitReview").addEventListener("click", () => {
         const text = document.getElementById("commentText").value;
+
+        const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
+
+            if (!isAuthenticated) {
+                alert("Login to leave a review 💬");
+
+        const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+
+                setTimeout(() => {
+                    window.location.href = `/Account/Login?message=login_required&returnUrl=${returnUrl}`;
+                }, 1000);
+
+                return;
+            }
 
         // ❗ перевірка рейтингу
         if (selectedRating == 0) {
