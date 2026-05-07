@@ -9,9 +9,10 @@ using System.Net;
 using System.Net.Mail;
 
 namespace AutoServicesRegina.Controllers
-{
+{       // Handles user authentication, registration,
+        // password reset, and account management
     public class AccountController : Controller
-    {
+    {    // Database context
         private readonly AutoServicesReginaDbContext _context;
         private readonly IConfiguration _configuration;
          
@@ -61,13 +62,13 @@ namespace AutoServicesRegina.Controllers
         public IActionResult ForgotPassword(string email)
         {
             var user = _context.Users.FirstOrDefault(u => u.EmailAddres == email);
-
+              // Always return confirmation view for security reasons
             if (user == null)
             {
                 return View("ForgotPasswordConfirmation");
             }
 
-            // генеруємо токен
+            // // Reset token expires
             user.ResetToken = Guid.NewGuid().ToString();
             user.ResetTokenExpiry = DateTime.UtcNow.AddHours(1);
 
@@ -102,7 +103,7 @@ namespace AutoServicesRegina.Controllers
                     ViewBag.Error = "User not found";
                     return View();
                 }
-
+                 
                 var hasher = new PasswordHasher<User>();
                 var result = hasher.VerifyHashedPassword(user, user.PasswordHash, password);
 
@@ -127,7 +128,7 @@ namespace AutoServicesRegina.Controllers
             CookieAuthenticationDefaults.AuthenticationScheme,
             principal
             );
-
+              // Prevent open redirect vulnerabilities
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
            {
             
@@ -172,7 +173,7 @@ namespace AutoServicesRegina.Controllers
                     EmailAddres = email,
                     Role = "User"
                 };
-
+                // Hash password before saving to database
                 var hasher = new PasswordHasher<User>();
                 user.PasswordHash = hasher.HashPassword(user, password);
 
