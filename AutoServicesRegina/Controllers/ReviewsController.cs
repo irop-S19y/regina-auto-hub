@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AutoServicesRegina.Controllers
 {    
+     // Only authenticated users can add reviews
     [Authorize] 
     public class ReviewsController : Controller
     {
@@ -17,32 +18,37 @@ namespace AutoServicesRegina.Controllers
         }
 
          [HttpPost]
+    
+      // Add or update review and rating
     public IActionResult Add([FromBody] ReviewDto dto)
   {
     var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
+     
+     // Check if user is authenticated
     if (!int.TryParse(userIdString, out int userId))
         return Unauthorized();
 
-    // 🔥 знайти існуючий рейтинг
+     // Find existing rating for this service
     var rating = _context.Ratings
         .FirstOrDefault(r => r.ServiceId == dto.ServiceId && r.UserId == userId);
 
     if (rating != null)
     {
-        // оновити рейтинг
+       // Update existing rating
         rating.Value = dto.Value;
 
-        // 🔥 знайти коментар через RatingId
+       // Find related comment
         var comment = _context.Comments
             .FirstOrDefault(c => c.RatingId == rating.Id);
 
         if (comment != null)
         {
+            // Update existing comment
             comment.Text = dto.Text;
         }
         else
         {
+             // Create new comment
             _context.Comments.Add(new Comment
             {
                 ServiceId = dto.ServiceId,
@@ -54,7 +60,7 @@ namespace AutoServicesRegina.Controllers
     }
     else
     {
-        // 🔥 створити рейтинг
+        // Create new rating
         var newRating = new Rating
         {
             ServiceId = dto.ServiceId,
@@ -63,9 +69,9 @@ namespace AutoServicesRegina.Controllers
         };
 
         _context.Ratings.Add(newRating);
-        _context.SaveChanges(); // отримати Id
+        _context.SaveChanges(); // Save to generate Rating ID
 
-        // 🔥 створити коментар і прив’язати
+        // Create comment linked to rating
         var newComment = new Comment
         {
             ServiceId = dto.ServiceId,

@@ -15,9 +15,9 @@ namespace AutoServicesRegina.Controllers
        public AllServicesController(AutoServicesReginaDbContext context)
 {
          _context = context;
-}
+}        // Temporary in-memory list (not used with database)
         public static List<Service> services = new List<Service>();
-
+         // Display all services with ratings and comments
         public IActionResult Index(string search)
       {
         var query = _context.Services
@@ -26,14 +26,15 @@ namespace AutoServicesRegina.Controllers
         .ThenInclude(r => r.User)
         .AsQueryable();
 
-            // 🔍 name 
+            // Filter services by name
+
             if (!string.IsNullOrEmpty(search))
             {
                 query = query.Where(s => s.Name.Contains(search));
             }
 
         var services = query.ToList();
-
+        // Get current logged-in user ID
         var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         if (int.TryParse(userIdString, out int userId))
@@ -46,7 +47,7 @@ namespace AutoServicesRegina.Controllers
             s.MyRating = myRating?.Value ?? 0;
         }
     }
-
+      // Calculate average rating and total rating count
     foreach (var s in services)
     {
         s.Rating = s.Ratings.Any()
@@ -58,7 +59,7 @@ namespace AutoServicesRegina.Controllers
 
     return View(services);
 }
-        // GET
+        // GET Edit servise page
        [Authorize(Roles = "Admin")]
        public IActionResult Edit(int id)
        {
@@ -69,7 +70,7 @@ namespace AutoServicesRegina.Controllers
 
             return View(service);
         }
-
+          // POST: Save edited service
          [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(Service service)
@@ -80,7 +81,7 @@ namespace AutoServicesRegina.Controllers
             return RedirectToAction("Index");
         }
           
-          //GET
+          //GET: Delete confirmation page 
          [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
@@ -91,7 +92,7 @@ namespace AutoServicesRegina.Controllers
 
             return View(service);
         }
-
+         // POST: Delete service from database
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int id)
@@ -107,13 +108,13 @@ namespace AutoServicesRegina.Controllers
             return RedirectToAction("Index");
         }
 
-
+         // Get: Add new servise page
         [Authorize(Roles = "Admin")]
         public IActionResult Add()
         {
             return View();
         }
-
+          // POST: Add new service to database
          [HttpPost]
             [Authorize(Roles = "Admin")]
             public IActionResult Add(Service service)
@@ -128,24 +129,28 @@ namespace AutoServicesRegina.Controllers
 
                 return RedirectToAction("Index");
             }
-         
+         // Add or update user rating
          [HttpPost]
          [Authorize]
       public IActionResult Rate([FromBody] RatingDto dto)
 {
     var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
+     
+      // Check if user is authenticated
     if (!int.TryParse(userIdString, out int userId))
         return Unauthorized();
+     // Check if user already rated this service
     var existing = _context.Ratings
         .FirstOrDefault(r => r.ServiceId == dto.ServiceId && r.UserId == userId);
 
     if (existing != null)
     {
+         // Update existing rating
         existing.Value = dto.Value; // 
     }
     else
     {
+         // Create new rating
         _context.Ratings.Add(new Rating
         {
             ServiceId = dto.ServiceId,
@@ -158,6 +163,7 @@ namespace AutoServicesRegina.Controllers
 
             return Json(new { success = true });
         }
+         // Display service ratings and comments
         public IActionResult Ratings(int id, int? star)
         
         {
@@ -174,10 +180,10 @@ namespace AutoServicesRegina.Controllers
             if (service == null)
                 return NotFound();
 
-            // ВСІ рейтинги (для статистики)
+             // Get all ratings for statistics
             var allRatings = service.Ratings;
 
-            // статистика (з усіх)
+           // Calculate rating statistics
             ViewBag.Avg = allRatings.Any() ? allRatings.Average(r => r.Value) : 0;
             ViewBag.Count = allRatings.Count;
 
@@ -189,7 +195,7 @@ namespace AutoServicesRegina.Controllers
 
             ViewBag.SelectedStar = star;
 
-            // ФІЛЬТР (тільки для списку)
+            // Filter ratings by selected star value
             if (star.HasValue)
             {
                 service.Ratings = allRatings
@@ -200,7 +206,7 @@ namespace AutoServicesRegina.Controllers
             {
                 service.Ratings = allRatings;
             }
-
+             // Get current user's rating
              var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
              if (int.TryParse(userIdString, out int userId))

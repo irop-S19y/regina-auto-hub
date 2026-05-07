@@ -186,10 +186,10 @@
     s.style.color = s.dataset.value <= selectedRating ? "gold" : "gray";
     });
 
-    // якщо форма існує (тобто користувач залогінений)
+    // Check if review form exists
     if (document.getElementById("review-form")) {
 
-    // вибір зірок
+    // Handle star selection
     document.querySelectorAll("#stars .star").forEach(star => {
         star.addEventListener("click", () => {
             selectedRating = star.dataset.value;
@@ -201,12 +201,13 @@
         });
     });
 
-    // кнопка submit
+         // Submit review
          document.getElementById("submitReview").addEventListener("click", () => {
         const text = document.getElementById("commentText").value;
 
         const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
-
+             
+             // Redirect guest users to login
             if (!isAuthenticated) {
                 alert("Login to leave a review 💬");
 
@@ -219,12 +220,13 @@
                 return;
             }
 
-        // ❗ перевірка рейтингу
+        // Require rating selection
         if (selectedRating == 0) {
             alert("Please select rating");
             return;
         }
-
+        
+         // Send review to server
         fetch('/Reviews/Add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -247,7 +249,7 @@
      </script>
 
      <script>
-            // 🔥 авто фокус на textarea
+             // Auto focus on textarea
             const textarea = document.getElementById("commentText");
             if (textarea) {
                 textarea.focus();

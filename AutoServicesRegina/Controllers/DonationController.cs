@@ -17,7 +17,7 @@ namespace AutoServicesRegina.Controllers
             _configuration = configuration;
         }
                 
-        
+        // Display donation page and total donations
          public IActionResult Index()
         {
             var totalCents = _context.Donations.Sum(d => d.Amount);
@@ -29,7 +29,7 @@ namespace AutoServicesRegina.Controllers
             return View();
         }
 
-        
+        // Create Stripe checkout session
         public IActionResult Donate(int amount)
         {
             var domain = _configuration["AppUrl"];
@@ -65,25 +65,29 @@ namespace AutoServicesRegina.Controllers
 
             var service = new SessionService();
             var session = service.Create(options);
-
+             
+             // Redirect user to Stripe checkout page
             return Redirect(session.Url);
         }
-
+         
+           // Handle successful payment
         public IActionResult Success(string sessionId)
        {
         var service = new SessionService();
         var session = service.Get(sessionId);
-
+        // Check payment status
         if (session.PaymentStatus != "paid")
         {
             return RedirectToAction("Cancel");
         }
-
+        
+        // Prevent duplicate donations in database
         if (_context.Donations.Any(d => d.StripeSessionId == sessionId))
         {
             return View();
         }
-
+        
+        // Save donation to database
         var donation = new DonationRecord
         {
             Amount = session.AmountTotal ?? 0,
@@ -100,7 +104,7 @@ namespace AutoServicesRegina.Controllers
 
 
     
-
+           // Payment canceled page
         public IActionResult Cancel()
         {
             return View();

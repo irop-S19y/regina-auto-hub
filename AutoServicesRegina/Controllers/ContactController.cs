@@ -23,6 +23,7 @@ namespace AutoServicesRegina.Controllers
         [HttpPost]
           public async Task<IActionResult> SendMessage(string name, string email, string message)
         {
+          // Validate form fields
           if (string.IsNullOrWhiteSpace(name) ||
           string.IsNullOrWhiteSpace(email) ||
           string.IsNullOrWhiteSpace(message))
@@ -30,13 +31,13 @@ namespace AutoServicesRegina.Controllers
                 ViewBag.Error = "All fields are required";
                 return View("Index");
             }
-
+             // Basic email validation
             if (!email.Contains("@") || !email.Contains("."))
             {
                 ViewBag.Error = "Invalid email";
                 return View("Index");
             }
-        
+          // Load Mailtrap configuration
           var config = _configuration.GetSection("Mailtrap");
 
           int port = config.GetValue<int>("Port");
@@ -49,14 +50,14 @@ namespace AutoServicesRegina.Controllers
           var fromEmail = config["From"];
           
           var toEmail = config["To"];
-
+           // Check email configuration
           if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(toEmail))
           {
              ViewBag.Error = "Email config missing";
              return View("Index");
           }
         
-        
+            // Create email message
              using var mail = new MailMessage
          {
             From = new MailAddress(fromEmail),
@@ -72,6 +73,7 @@ namespace AutoServicesRegina.Controllers
          
                try
             {
+                 // Send email
                 await client.SendMailAsync(mail);
                 ViewBag.Success = "Message sent successfully!";
             }

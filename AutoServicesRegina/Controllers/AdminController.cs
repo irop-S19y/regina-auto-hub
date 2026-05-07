@@ -31,7 +31,7 @@ namespace AutoServicesRegina.Controllers
             return RedirectToAction("Ratings", "AllServices", new { id = serviceId });
         }
 
-        // 🔥 DELETE RATING
+        // 🔥 DELETE RATING  and related comment
         [HttpPost]
         public IActionResult DeleteRating(int id)
         {
@@ -42,7 +42,7 @@ namespace AutoServicesRegina.Controllers
 
             int serviceId = rating.ServiceId;
 
-            // 🔥 знайти коментар цього юзера для цього сервісу
+            // Find comment from the same user for this service
             var comment = _context.Comments
                 .FirstOrDefault(c => c.UserId == rating.UserId && c.ServiceId == rating.ServiceId);
 

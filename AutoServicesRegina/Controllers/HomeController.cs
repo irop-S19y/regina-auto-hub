@@ -13,24 +13,28 @@ public class HomeController : Controller
     {
         _context = context;
     }
-
+ 
+     // Display homepage with top-rated services
     public IActionResult Index()
    
 {
     var topServices = _context.Services
     .Include(s => s.Ratings)
+    // Sort services by average rating
     .OrderByDescending(s => s.Ratings.Any() ? s.Ratings.Average(r => r.Value) : 0)
     .Take(3)
     .ToList();
 
     return View(topServices);
 }
-
+     
+     // Privacy policy page
     public IActionResult Privacy()
     {
         return View();
     }
 
+     // Display error page
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

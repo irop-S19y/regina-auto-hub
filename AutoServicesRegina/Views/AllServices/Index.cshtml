@@ -81,7 +81,7 @@
 
             <script>
           document.addEventListener("DOMContentLoaded", function () {
-
+          // Check if user is logged in
           const isAuthenticated = @((User?.Identity?.IsAuthenticated ?? false).ToString().ToLower());
 
           document.querySelectorAll(".rating").forEach(rating => {
@@ -93,10 +93,10 @@
           rating.querySelectorAll(".star").forEach(s => {
             s.style.color = s.dataset.value <= myRating ? "gold" : "lightgray";
          });
-
+           // Add click event to stars
            rating.querySelectorAll(".star").forEach(star => {
             star.addEventListener("click", () => {
-
+                 // Redirect guest users to login page
                 if (!isAuthenticated) {
 
                 const alertBox = document.getElementById("loginAlert");
@@ -117,6 +117,7 @@
                
                 const value = parseInt(star.dataset.value);
 
+                // Send rating to server
                 fetch('/AllServices/Rate', {
                     method: 'POST',
                     headers: {
@@ -133,6 +134,7 @@
                         return;
                     }
 
+                    // Reload page after successful rating
                     if (res.ok) {
                         window.location.reload(); // 
                     }
@@ -143,7 +145,7 @@
     });
 });
 
-        // 🔥 FIX для back/cache
+        //cached star colors after page navigation
         window.addEventListener("pageshow", function () {
         document.querySelectorAll(".rating").forEach(rating => {
 

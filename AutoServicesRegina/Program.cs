@@ -16,18 +16,20 @@ public class Program
        
         StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
          
-        // Add services
+        // Add MVC services
         builder.Services.AddControllersWithViews();
         
+        // Configure SQLite database
         builder.Services.AddDbContext<AutoServicesReginaDbContext>(options =>
         options.UseSqlite("Data Source=db/AutoServicesReginaDb.sqlite"));
         
-
+        // Configure cookie authentication
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
        {
             options.LoginPath = "/Account/Login";
-
+             
+             // Redirect unauthorized users to login page
             options.Events.OnRedirectToLogin = context =>
             {
                 var returnUrl = context.Request.Path + context.Request.QueryString;
@@ -47,7 +49,7 @@ public class Program
          
               
 
-            // Configure pipeline
+            // Configure middleware pipeline
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
@@ -58,10 +60,12 @@ public class Program
         app.UseStaticFiles();
 
         app.UseRouting();
-
+         
+        // Enable authentication and authorization
         app.UseAuthentication();   // Important
         app.UseAuthorization();
-
+        
+         // Configure default route
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
