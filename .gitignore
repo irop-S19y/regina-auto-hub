@@ -61,6 +61,14 @@ AutoServicesRegina/obj/Debug/net10.0/rbcswa.dswa.cache.json
 AutoServicesRegina/obj/Debug/net10.0/staticwebassets.build.endpoints.json
 AutoServicesRegina/obj/Debug/net10.0/staticwebassets.build.json
 AutoServicesRegina/obj/Debug/net10.0/staticwebassets.build.json.cache
- Sensitive config (DO NOT PUSH)
+# Sensitive config (DO NOT PUSH)
+ 
 **/appsettings.json
 **/appsettings.Development.json
+# Database
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.mdf
+*.ldf
