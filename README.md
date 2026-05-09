@@ -10,6 +10,9 @@ A web platform for finding trusted auto repair shops in Regina, Saskatchewan, Ca
 - Search functionality
 - Responsive design
 - User-friendly interface
+- Role-based authorization
+- Admin panel
+-Comments system
 
 ## Technologies Used
 
