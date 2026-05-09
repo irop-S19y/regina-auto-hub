@@ -16,6 +16,7 @@
     <Folder Include="Views\SignUp2\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\images\services\" />
+    <Folder Include="wwwroot\screenshots\" />
   </ItemGroup>
 
   <ItemGroup>

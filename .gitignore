@@ -72,3 +72,22 @@ AutoServicesRegina/obj/Debug/net10.0/staticwebassets.build.json.cache
 *.sqlite
 *.mdf
 *.ldf
+# VS Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Environment files
+.env
+.env.*
+
+# OS files
+Thumbs.db
+desktop.ini
