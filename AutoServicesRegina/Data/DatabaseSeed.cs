@@ -277,6 +277,18 @@ public static class DatabaseSeed
                     WorkingHours = "Mon-Fri 8:00-17:00",
                     ImageUrl = "/images/services/a1.jpg",
                     Rating = 4
+                },
+                new Service
+                {
+                    Name = "Auto Luxe Service",
+                    Address = "Regina, SK",
+                    City = "Regina",
+                    Phone = "",
+                    Website = "https://www.google.com/maps/place/Auto+Luxe+Service/",
+                    Description = "Auto repair and maintenance services.",
+                    WorkingHours = "Mon-Sat 9:00-18:00",
+                    ImageUrl = "/images/services/autoluxe.jpg",
+                    Rating = 5
                 }
             };
 
