@@ -1,83 +1,95 @@
 ﻿@using System.Linq
 @model List<AutoServicesRegina.Models.Service>
-<div class="container mt-5">
 
-    <div class="text-center mb-5">
-        <h1 class="display-4">Auto Hub Service in Regina</h1>
-        <p class="lead">Find the best and trusted auto repair shops in Regina</p>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>🚗 Auto Hub Services</h1>
+            <p>Find the best and most trusted auto repair shops in Regina, Saskatchewan</p>
+        </div>
     </div>
-    <hr class="mt-5" />
+</section>
 
-    <div class="text-center mt-4 mb-5">
-    <h4>Search Auto Services</h4>
+<!-- Search Section -->
+<div class="container">
+    <div class="search-section">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="text-center">🔍 Search Auto Services</h4>
+                <form method="get" asp-controller="AllServices" asp-action="Index">
+                    <div class="input-group input-group-lg">
+                        <input type="text"
+                               name="search"
+                               class="form-control"
+                               placeholder="Enter service name, type, or location..." />
+                        <button type="submit" class="btn btn-primary">
+                            Search
+                        </button>
+                    </div>
+                </form>
 
-        <form method="get" asp-controller="AllServices" asp-action="Index"
-        class="d-flex justify-content-center mt-3">
-
-        <input type="text"
-               name="search"
-               class="form-control w-50 me-2"
-               placeholder="Enter auto service name..." />
-
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-
-    </form>
-   
-    <div class="text-center mt-4 mb-5">
-    <a asp-controller="AllServices" asp-action="Index" class="btn btn-outline-success btn-lg">
-        View All Services
-    </a>
-
-</div>
-
-
-    <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 shadow">
-                <img src="@item.ImageUrl" class="card-img-top" style="height:200px; object-fit:cover;">
-
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-
-                    <p class="card-text">
-    📍 
-                    <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(item.Address)" 
-                    target="_blank">
-                        @item.Address
+                <div class="text-center mt-4">
+                    <a asp-controller="AllServices" asp-action="Index" class="btn btn-outline-success btn-lg">
+                        📋 View All Services
                     </a>
-                    </p>
-                      
-                      <div>
-                    @{
-                        var avg = item.Ratings.Any() ? item.Ratings.Average(r => r.Value) : 0;
-                    }
-
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        if (i <= Math.Round(avg))
-                        {
-                            <span style="color:gold;">★</span>
-                        }
-                        else
-                        {
-                            <span style="color:lightgray;">★</span>
-                        }
-                    }
-
-                    <span>(@avg.ToString("0.0"))</span>
-                </div>
-                   
-                    <a href="@item.Website"
-                     target="_blank"
-                     class="btn btn-success">
-                       Visit Website
-                       </a>
                 </div>
             </div>
         </div>
-    }
+    </div>
+
+    <!-- Featured Services -->
+    <div class="mt-5 mb-5">
+        <h2 class="text-center mb-4" style="color: var(--primary-color); font-weight: 700;">
+            ⭐ Featured Services
+        </h2>
+
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name">
+
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+
+                            <p class="card-text text-muted small">
+                                📍 <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(item.Address)"
+                                      target="_blank" class="text-decoration-none">
+                                    @item.Address
+                                </a>
+                            </p>
+
+                            <!-- Rating Stars -->
+                            <div class="mb-3">
+                                @{
+                                    var avg = item.Ratings.Any() ? item.Ratings.Average(r => r.Value) : 0;
+                                }
+
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= Math.Round(avg))
+                                    {
+                                        <span class="star" style="color: var(--accent-color);">★</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="star" style="color: #ddd;">★</span>
+                                    }
+                                }
+                                <small class="ms-2 text-muted">(@avg.ToString("0.0"))</small>
+                            </div>
+
+                            <a href="@item.Website"
+                               target="_blank"
+                               class="btn btn-success">
+                                🌐 Visit Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
