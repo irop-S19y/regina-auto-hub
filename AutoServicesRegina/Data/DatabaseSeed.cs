@@ -281,12 +281,12 @@ public static class DatabaseSeed
                 new Service
                 {
                     Name = "Auto Luxe Service",
-                    Address = "Regina, SK",
+                    Address = "170 Albert St, Regina, SK S4R 2N2",
                     City = "Regina",
-                    Phone = "",
-                    Website = "https://www.google.com/maps/place/Auto+Luxe+Service/",
-                    Description = "Auto repair and maintenance services.",
-                    WorkingHours = "Mon-Sat 9:00-18:00",
+                    Phone = "(639) 382-2888",
+                    Website = "https://auto-luxe.ca",
+                    Description = "Auto repair shop offering maintenance, repairs, and local service in Regina.",
+                    WorkingHours = "Mon-Sat 9:00-19:00",
                     ImageUrl = "/images/services/autoluxe.jpg",
                     Rating = 5
                 }

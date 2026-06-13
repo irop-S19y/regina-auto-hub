@@ -23,10 +23,18 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 140px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--light-bg);
   color: var(--dark-text);
+}
+
+main {
+  padding-bottom: 20px;
+}
+
+.all-services-page {
+  padding-bottom: 120px;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -156,39 +164,40 @@ body {
 
 /* Buttons */
 .btn-primary {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #b71c1c;
-  border-color: #b71c1c;
+  background-color: #163553;
+  border-color: #163553;
   transform: scale(1.05);
 }
 
 .btn-success {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   font-weight: 600;
   width: 100%;
 }
 
 .btn-success:hover {
-  background-color: #b71c1c;
-  border-color: #b71c1c;
+  background-color: #163553;
+  border-color: #163553;
 }
 
 .btn-outline-success {
-  color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
   font-weight: 600;
 }
 
 .btn-outline-success:hover {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
 }
 
 /* Search Section */
