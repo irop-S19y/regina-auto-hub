@@ -1,0 +1,9 @@
+[out:json][timeout:25];
+area["name"="Regina"][admin_level~"6|8"]->.a;
+(
+  node["shop"="car_repair"](area.a);
+  way["shop"="car_repair"](area.a);
+  node["amenity"="car_repair"](area.a);
+  way["amenity"="car_repair"](area.a);
+);
+out center 200;

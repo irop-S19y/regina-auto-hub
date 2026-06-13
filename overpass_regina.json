@@ -1,0 +1,680 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-06-13T00:30:07Z",
+    "timestamp_areas_base": "2026-05-12T07:36:16Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 4719389642,
+  "lat": 50.4082670,
+  "lon": -104.6170258,
+  "tags": {
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 5541573816,
+  "lat": 50.4489618,
+  "lon": -104.5818797,
+  "tags": {
+    "addr:city": "Regina",
+    "addr:housenumber": "1865",
+    "addr:postcode": "S4N 6C6",
+    "addr:street": "McAra Street",
+    "email": "info@professionalautobody.ca",
+    "level": "1",
+    "name": "Professional Auto Body LTD",
+    "opening_hours": "Mo-Fr 07:30-17:00",
+    "operator": "The Moser Family",
+    "payment:cash": "yes",
+    "payment:cheque": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:electronic_purses": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+1-306-525-2233",
+    "service:vehicle:alignment": "yes",
+    "service:vehicle:body_repair": "yes",
+    "service:vehicle:car_parts": "yes",
+    "service:vehicle:car_repair": "yes",
+    "service:vehicle:inspection": "yes",
+    "service:vehicle:insurance": "yes",
+    "service:vehicle:repairs": "yes",
+    "service:vehicle:truck_repair": "yes",
+    "shop": "car_repair",
+    "source": "Local Knowledge",
+    "start_date": "1969",
+    "website": "http://www.professionalautobody.ca/",
+    "wikidata": "Q1310967",
+    "wikipedia": "en:Automobile repair shop"
+  }
+},
+{
+  "type": "node",
+  "id": 5911889000,
+  "lat": 50.4517176,
+  "lon": -104.5954916,
+  "tags": {
+    "name": "Rudy's Breaks and Steering LTD",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 5966966369,
+  "lat": 50.4475099,
+  "lon": -104.5808208,
+  "tags": {
+    "name": "Minute Muffler",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 5966966475,
+  "lat": 50.4504271,
+  "lon": -104.6200293,
+  "tags": {
+    "addr:housenumber": "1800",
+    "check_date": "2025-07-21",
+    "name": "Regina Auto Body",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7393884980,
+  "lat": 50.4483028,
+  "lon": -104.5480862,
+  "tags": {
+    "name": "Advanced Collision",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 7889598963,
+  "lat": 50.4762564,
+  "lon": -104.6175571,
+  "tags": {
+    "check_date": "2025-07-03",
+    "check_date:opening_hours": "2025-07-03",
+    "name": "Craftsman Collision",
+    "opening_hours": "Mo-Fr 08:00-17:30",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "shop": "car_repair",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 8565595365,
+  "lat": 50.4779407,
+  "lon": -104.6168970,
+  "tags": {
+    "brand": "Midas",
+    "brand:wikidata": "Q3312613",
+    "check_date": "2025-07-28",
+    "name": "Midas",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 8736997456,
+  "lat": 50.4699711,
+  "lon": -104.6177944,
+  "tags": {
+    "check_date": "2025-07-17",
+    "name": "Advance Glass & Mirror",
+    "service": "repair",
+    "shop": "car_repair",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12717339758,
+  "lat": 50.4773182,
+  "lon": -104.6188150,
+  "tags": {
+    "brand": "Goodyear",
+    "brand:wikidata": "Q620875",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 12993568943,
+  "lat": 50.4747101,
+  "lon": -104.6186104,
+  "tags": {
+    "name": "ADAS Calibration",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 13009525595,
+  "lat": 50.4957359,
+  "lon": -104.6708968,
+  "tags": {
+    "brand": "NAPA AutoCare Center",
+    "brand:wikidata": "Q6970842",
+    "name": "Napa Autopro Rochdale Automotive",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 13009531743,
+  "lat": 50.4956258,
+  "lon": -104.6713714,
+  "tags": {
+    "name": "Prairie Pitts Stop Automotive",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 13032553323,
+  "lat": 50.4776764,
+  "lon": -104.6173194,
+  "tags": {
+    "name": "GlassMasters",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "node",
+  "id": 13090509458,
+  "lat": 50.4686005,
+  "lon": -104.6191103,
+  "tags": {
+    "name": "Auto Smarts",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 155563625,
+  "center": {
+    "lat": 50.4786415,
+    "lon": -104.6190550
+  },
+  "nodes": [
+    1679574775,
+    1679574741,
+    1679574745,
+    1679574778,
+    1679574775
+  ],
+  "tags": {
+    "brand": "Mr. Lube",
+    "brand:wikidata": "Q17104067",
+    "building": "garage",
+    "building:colour": "blue",
+    "name": "Mr. Lube",
+    "service": "repair",
+    "shop": "car_repair",
+    "source": "bing",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 271190606,
+  "center": {
+    "lat": 50.4461673,
+    "lon": -104.5486902
+  },
+  "nodes": [
+    2761570149,
+    2761570150,
+    2761570151,
+    2761570152,
+    2761570149
+  ],
+  "tags": {
+    "brand": "Mr. Lube",
+    "brand:wikidata": "Q17104067",
+    "brand:wikipedia": "en:Mr. Lube",
+    "building": "yes",
+    "name": "Mr. Lube",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 279463036,
+  "center": {
+    "lat": 50.4023700,
+    "lon": -104.6459229
+  },
+  "nodes": [
+    2836842309,
+    2836842310,
+    2836842306,
+    2836842305,
+    2836842309
+  ],
+  "tags": {
+    "brand": "Mr. Lube",
+    "brand:wikidata": "Q17104067",
+    "brand:wikipedia": "en:Mr. Lube",
+    "building": "yes",
+    "name": "Mr. Lube",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 285981607,
+  "center": {
+    "lat": 50.4940567,
+    "lon": -104.6666546
+  },
+  "nodes": [
+    2896245938,
+    2896245939,
+    2896245927,
+    2896245926,
+    2896245938
+  ],
+  "tags": {
+    "brand": "Mr. Lube",
+    "brand:wikidata": "Q17104067",
+    "building": "yes",
+    "building:levels": "1",
+    "name": "Mr. Lube",
+    "roof:levels": "0",
+    "roof:shape": "flat",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 286007381,
+  "center": {
+    "lat": 50.4553424,
+    "lon": -104.5945532
+  },
+  "nodes": [
+    2896423228,
+    2896423230,
+    2896423231,
+    2896423234,
+    2896423233,
+    2896423235,
+    2896423232,
+    2896423229,
+    2896423226,
+    2896423224,
+    2896423227,
+    2896423225,
+    2896423228
+  ],
+  "tags": {
+    "addr:housenumber": "980",
+    "addr:street": "Dewdney Avenue",
+    "building": "yes",
+    "name": "Regina Battery Depot",
+    "note": "Not directly car-repair, but they appear to fit as car-repair better than electronics-repair",
+    "service": "parts;repair",
+    "shop": "car_repair",
+    "website": "https://reginabatterydepot.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 286007717,
+  "center": {
+    "lat": 50.4669545,
+    "lon": -104.5663780
+  },
+  "nodes": [
+    2896427208,
+    2896427212,
+    2896427211,
+    2896427210,
+    2896427209,
+    2896427207,
+    2896427208
+  ],
+  "tags": {
+    "addr:housenumber": "459",
+    "addr:street": "Henderson Drive",
+    "building": "yes",
+    "name": "Queen City Auto Body",
+    "service": "repair",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 287981202,
+  "center": {
+    "lat": 50.4968974,
+    "lon": -104.6465307
+  },
+  "nodes": [
+    2915339841,
+    2915339842,
+    2915339834,
+    2915339833,
+    2915339841
+  ],
+  "tags": {
+    "addr:housenumber": "4530",
+    "addr:street": "Rochdale Boulevard",
+    "brand": "Great Canadian Oil Change",
+    "brand:wikidata": "Q120502925",
+    "building": "commercial",
+    "building:colour": "red",
+    "building:levels": "1",
+    "name": "Great Canadian Oil Change",
+    "opening_hours": "Mo-Th 08:00-20:00; Fr,Sa 08:00-18:00; Su 10:00-16:00",
+    "roof:levels": "0",
+    "roof:shape": "flat",
+    "service": "oil",
+    "shop": "car_repair",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 288123731,
+  "center": {
+    "lat": 50.4524983,
+    "lon": -104.5958810
+  },
+  "nodes": [
+    2916634972,
+    6346255094,
+    6346255095,
+    6346255096,
+    6346255097,
+    2916634973,
+    2916634984,
+    2916634983,
+    2916634986,
+    2916634985,
+    2916634972
+  ],
+  "tags": {
+    "addr:housenumber": "1650",
+    "addr:street": "Winnipeg Street",
+    "building": "yes",
+    "name": "A&B Autobody",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 288668572,
+  "center": {
+    "lat": 50.4596000,
+    "lon": -104.6175681
+  },
+  "nodes": [
+    2922205283,
+    2922205282,
+    2922205280,
+    2922205281,
+    2922205283
+  ],
+  "tags": {
+    "addr:housenumber": "1205",
+    "addr:street": "Albert Street",
+    "brand": "Speedy Glass",
+    "brand:wikidata": "Q119104960",
+    "building": "yes",
+    "building:colour": "white",
+    "name": "Speedy Glass",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 288723822,
+  "center": {
+    "lat": 50.4495323,
+    "lon": -104.6175207
+  },
+  "nodes": [
+    2922841917,
+    2922841918,
+    2922841913,
+    2922841914,
+    2922841912,
+    2922841911,
+    2922841917
+  ],
+  "tags": {
+    "addr:housenumber": "1839",
+    "addr:street": "Albert Street",
+    "brand": "Midas",
+    "brand:wikidata": "Q3312613",
+    "brand:wikipedia": "en:Midas (automotive service)",
+    "building": "yes",
+    "building:colour": "white",
+    "building:levels": "1",
+    "check_date": "2025-07-03",
+    "check_date:opening_hours": "2025-07-03",
+    "name": "Midas",
+    "opening_hours:signed": "no",
+    "roof:shape": "flat",
+    "shop": "car_repair",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 288845263,
+  "center": {
+    "lat": 50.4455882,
+    "lon": -104.5386103
+  },
+  "nodes": [
+    2924008856,
+    2924008850,
+    2924008860,
+    2924008866,
+    2924008856
+  ],
+  "tags": {
+    "brand": "Great Canadian Oil Change",
+    "brand:wikidata": "Q120502925",
+    "building": "yes",
+    "name": "Great Canadian Oil Change",
+    "service:vehicle:oil_change": "yes",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 290777842,
+  "center": {
+    "lat": 50.4647584,
+    "lon": -104.6178000
+  },
+  "nodes": [
+    2942839476,
+    2942839475,
+    2942839468,
+    2942839469,
+    2942839476
+  ],
+  "tags": {
+    "brand": "Great Canadian Oil Change",
+    "brand:wikidata": "Q120502925",
+    "building": "yes",
+    "building:colour": "red",
+    "name": "Great Canadian Oil Change",
+    "shop": "car_repair",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 336941547,
+  "center": {
+    "lat": 50.4581342,
+    "lon": -104.5949041
+  },
+  "nodes": [
+    3440302730,
+    3440302731,
+    3440302725,
+    3440302724,
+    3440302730
+  ],
+  "tags": {
+    "addr:housenumber": "1301",
+    "addr:street": "Winnipeg Street",
+    "building": "commercial",
+    "name": "Tri's Dent Repair",
+    "service": "repair",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 337076444,
+  "center": {
+    "lat": 50.4517619,
+    "lon": -104.6015312
+  },
+  "nodes": [
+    5966966844,
+    3441728956,
+    3441728954,
+    3441728953,
+    5966966844
+  ],
+  "tags": {
+    "addr:housenumber": "1703",
+    "addr:street": "St John Street",
+    "building": "commercial",
+    "name": "General Lube",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 337076458,
+  "center": {
+    "lat": 50.4505575,
+    "lon": -104.5972766
+  },
+  "nodes": [
+    5911887108,
+    3441728929,
+    3441728925,
+    3441728926,
+    5911887108
+  ],
+  "tags": {
+    "addr:housenumber": "1777",
+    "addr:street": "Montreal Street",
+    "building": "commercial",
+    "building:levels": "1",
+    "name": "Downtown Automatic Transmission LTD",
+    "roof:shape": "flat",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 337267542,
+  "center": {
+    "lat": 50.4517794,
+    "lon": -104.6000395
+  },
+  "nodes": [
+    5993611444,
+    3443776539,
+    3443776535,
+    3443776536,
+    5993611444
+  ],
+  "tags": {
+    "addr:housenumber": "1335",
+    "addr:street": "Saskatchewan Drive",
+    "building": "commercial",
+    "description": "\"Complete Automotive Service\"",
+    "name": "Micro Tune",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 427924139,
+  "center": {
+    "lat": 50.4546136,
+    "lon": -104.5956595
+  },
+  "nodes": [
+    4270863659,
+    4270863660,
+    4270863450,
+    4270863451,
+    4270863464,
+    4270863465,
+    4270863446,
+    4270863445,
+    4270863462,
+    4270863460,
+    4270863655,
+    4270863656,
+    4270863659
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Roadway Auto Service",
+    "service": "repair",
+    "shop": "car_repair"
+  }
+},
+{
+  "type": "way",
+  "id": 677779929,
+  "center": {
+    "lat": 50.4510811,
+    "lon": -104.6196911
+  },
+  "nodes": [
+    6344106946,
+    6346254964,
+    6346254965,
+    6346254966,
+    6346254967,
+    6346254968,
+    6346254969,
+    6346254970,
+    6346254971,
+    6346254972,
+    6346254973,
+    6346254974,
+    6344106947,
+    6344106946
+  ],
+  "tags": {
+    "check_date": "2025-07-15",
+    "name": "Anderson Collision and Glass",
+    "service:vehicle:car_repair": "yes",
+    "service:vehicle:used_car_sales": "yes",
+    "shop": "car_repair"
+  }
+}
+
+  ]
+}

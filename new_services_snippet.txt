@@ -1,0 +1,12 @@
+﻿,                new Service
+                {
+                    Name = "Professional Auto Body LTD",
+                    Address = "Regina, SK",
+                    City = "Regina",
+                    Phone = "+13065252233",
+                    Website = "http://www.professionalautobody.ca/",
+                    Description = "Auto repair and maintenance services.",
+                    WorkingHours = "Mon-Fri 8:00-17:00",
+                    ImageUrl = "/images/services/placeholder.jpg",
+                    Rating = 4
+                }

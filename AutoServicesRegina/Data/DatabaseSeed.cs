@@ -290,6 +290,378 @@ public static class DatabaseSeed
                     ImageUrl = "/images/services/autoluxe.jpg",
                     Rating = 5
                 }
+                    ,                new Service
+                    {
+                        Name = "Professional Auto Body LTD",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "+13065252233",
+                        Website = "http://www.professionalautobody.ca/",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Rudy's Breaks and Steering LTD",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Minute Muffler",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Regina Auto Body",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Advanced Collision",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Craftsman Collision",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Midas",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Advance Glass & Mirror",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "ADAS Calibration",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Napa Autopro Rochdale Automotive",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Prairie Pitts Stop Automotive",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "GlassMasters",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Auto Smarts",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Mr. Lube",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Mr. Lube",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Mr. Lube",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Mr. Lube",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Regina Battery Depot",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "https://reginabatterydepot.com/",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Queen City Auto Body",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Great Canadian Oil Change",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "A&B Autobody",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Speedy Glass",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Midas",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Great Canadian Oil Change",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Great Canadian Oil Change",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Tri's Dent Repair",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "General Lube",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Downtown Automatic Transmission LTD",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Micro Tune",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Roadway Auto Service",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
+                    ,                new Service
+                    {
+                        Name = "Anderson Collision and Glass",
+                        Address = "Regina, SK",
+                        City = "Regina",
+                        Phone = "",
+                        Website = "",
+                        Description = "Auto repair and maintenance services.",
+                        WorkingHours = "Mon-Fri 8:00-17:00",
+                        ImageUrl = "/images/services/placeholder.jpg",
+                        Rating = 4
+                    }
             };
 
                 foreach (var newService in services)
