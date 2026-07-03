@@ -1,4 +1,14 @@
-$json = Get-Content -Raw overpass_regina.json | ConvertFrom-Json
+$scriptRoot = $PSScriptRoot
+$repoRoot = Split-Path -Parent $scriptRoot
+$dataDir = Join-Path $repoRoot 'AutoServicesRegina/Data/Seed/Services'
+$inputPath = Join-Path $dataDir 'overpass_regina.json'
+$outputPath = Join-Path $dataDir 'new_services_snippet.txt'
+
+if (-not (Test-Path $inputPath)) {
+    throw "Input file not found: $inputPath"
+}
+
+$json = Get-Content -Raw $inputPath | ConvertFrom-Json
 $elements = $json.elements
 $out = New-Object System.Collections.Generic.List[string]
 $count = 0
@@ -57,5 +67,5 @@ foreach ($el in $elements) {
     $count++
     if ($count -ge 100) { break }
 }
-$out -join "`n" | Set-Content new_services_snippet.txt -Encoding utf8
-Write-Output "Generated $count service entries to new_services_snippet.txt"
+$out -join "`n" | Set-Content $outputPath -Encoding utf8
+Write-Output "Generated $count service entries to $outputPath"

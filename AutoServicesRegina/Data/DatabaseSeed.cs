@@ -587,7 +587,7 @@ public static class DatabaseSeed
                         Website = "",
                         Description = "Auto repair and maintenance services.",
                         WorkingHours = "Mon-Fri 8:00-17:00",
-                        ImageUrl = "/images/services/placeholder.jpg",
+                        ImageUrl = "ges/services//imaplaceholder.jpg",
                         Rating = 4
                     }
                     ,                new Service
@@ -673,16 +673,16 @@ public static class DatabaseSeed
                 {
                     context.Services.Add(newService);
                 }
-                else
-                {
-                    existing.Address = newService.Address;
-                    existing.Phone = newService.Phone;
-                    existing.Website = newService.Website;
-                    existing.Description = newService.Description;
-                    existing.WorkingHours = newService.WorkingHours;
-                    existing.City = newService.City;
-                    existing.ImageUrl = newService.ImageUrl;
-                }
+                   //   else
+                //{
+                   // existing.Address = newService.Address;
+                    //existing.Phone = newService.Phone;
+                    //existing.Website = newService.Website;
+                    //existing.Description = newService.Description;
+                    //existing.WorkingHours = newService.WorkingHours;
+                    //existing.City = newService.City;
+                    //existing.ImageUrl = newService.ImageUrl;
+                //}
 
             }
 
