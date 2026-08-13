@@ -28,6 +28,9 @@ A web platform for finding trusted auto repair shops in Regina, Saskatchewan, Ca
 ### Home Page
 ![Home Page](AutoServicesRegina/wwwroot/screenshots/home-page.png)
 
+### Search Services
+![Search Services](AutoServicesRegina/wwwroot/screenshots/home-search-services.png)
+
 ### Services Page
 ![Services Page](AutoServicesRegina/wwwroot/screenshots/all-services-page.png)
 
